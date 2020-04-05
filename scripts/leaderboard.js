@@ -54,37 +54,31 @@ let leaders = db.collection('Users');
 // Get leaderboard element.
 let boards = document.getElementById('leaderboards');
 
+// Add leaderboard information to the page.
 function leaderboard() {
-    let topTen = leaders.orderBy('wins', 'desc').limit(TOP_PLAYERS);
+    
+    // Organize users based on their score.
+    let topTen = leaders.orderBy('score', 'desc').limit(TOP_PLAYERS);
 
-    let i = 1;
+    let place = 1; // Rank amongst other users.
 
-    // Create a row element
-    let list = document.createElement('ol');
-    list.setAttribute('list-style-type', 'none');
-
+    // Get the top 10 players based on their score, in descending order.
     topTen.get().then((snapshot) => {
         snapshot.docs.forEach(doc => {
             let players = doc.data();
 
-            console.log(players);
             // Create a cell element.
-            let item = document.createElement('li');
-
-            // Set the contents.
-            item.appendChild(document.createTextNode(players.email
-                + ', ' + 'Wins: ' + players.wins));
-
-            // Add it to the list.
-            list.appendChild(item);
-
-             // Gives each user a rank.
-             i++;
+            boards.innerHTML += '<tr>'
+            + '<td>' + i + '<td>'
+            + '<td' + players.username + '<td>'
+            + '<td>' + players.score + '<td>'
+            + '<tr>';
+            
+            // increment the users rank.
+            place++;
         })
-    });
-    
-    // Append the list.
-    boards.appendChild(list);
+    })
 }
 
+// Call the function.
 leaderboard();

@@ -80,7 +80,7 @@ function login() {
 //------------------------------------------------------ 
 function logout() {
     firebase.auth().signOut().then(function () {
-        window.location.replace('login.html');
+        window.location.replace('index.html');
     }).catch(displayError);
 }
 
@@ -118,28 +118,49 @@ firebase.auth().onAuthStateChanged(function(user) {
   });
 
 //------------------------------------------------------
-// Login Anonymous (OPTIONAL)
+// Send Password Reset email
 //------------------------------------------------------ 
 
-// Allow user to sign in as guest.
-firebase.auth().signInAnonymously().catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // ...
-  });
+// Reference firebase authentication
+let auth = firebase.auth();
 
-  let anon;
+// Get the users email address.
+let emailAddress = "user@example.com";
 
-  // Get Guest user data 
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      // User is signed in.
-      anon = user.isAnonymous;
-      uid = user.uid;
-      // ...
-    } else {
-      // User is signed out.
-      console.log('No User logged in.')
-    }
-  });
+// Send the password reset email.
+auth.sendPasswordResetEmail(emailAddress).then(function() {
+  // Email sent.
+}).catch(function(error) {
+  // An error happened.
+});
+
+//------------------------------------------------------
+// Update password
+//------------------------------------------------------ 
+
+// Grab the currently logged in user.
+let user = firebase.auth().currentUser;
+
+// Get the new password.
+let newPassword = getASecureRandomPassword();
+
+// Update the pasword in firestore.
+user.updatePassword(newPassword).then(function() {
+  // Update successful.
+}).catch(function(error) {
+  // An error happened.
+});
+
+//------------------------------------------------------
+// Get User's profile information
+//------------------------------------------------------ 
+
+var user = firebase.auth().currentUser;
+var name, email, photoUrl, uid, emailVerified;
+
+if (user != null) {
+  name = user.displayName;
+  email = user.email;
+  emailVerified = user.emailVerified;
+  uid = user.uid;
+}
