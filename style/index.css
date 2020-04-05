@@ -1,13 +1,26 @@
+.login-content{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	text-align: center;
+}
 
-.homeButtons {
-    position: absolute;
-    top: 45%;
-    left: 31%;
-    width: 40vw;
+
+.buttons {
+    width: 15vw;
     height: 4vh;
     font-size: 2vh;
-    background-color: lightblue;
+    background-color: lightcyan;
     border-radius: 20px;
+    cursor: pointer;
+}
+
+input.div {
+    display: grid;
+    grid-template-columns: 7% 93%;
+    margin: 25px;
+    padding: 5px;
+    border-bottom: 2px solid #d9d9dd;
 }
 
 .studyGuide {
@@ -40,11 +53,9 @@
 }
 
 body {
-    background-image: url("images/homegif.gif");
+    background-image: url('/images/wave.png');
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-size: 100% 100%;
+    ;
 }
 
-<i class="myAccount"></i><br>
-My Account

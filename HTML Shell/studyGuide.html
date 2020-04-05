@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Study Guide</title>
-        <link href="guide.css" rel="stylesheet" type="text/css">
-    </head>
 
-    <body>
+<head>
+  <title>Study Guide</title>
+  <link href="/style/guide.css" rel="stylesheet" type="text/css">
+</head>
 
-        <div class="headings">
-            <b>Electronics</b>
-        </div>
-        <div class="container pics">
-            <div class="row">
-              <div class="col">
-                    <img class="photos" src="images/phone.jfif"></img>
-                </div>
-              <div class="col">
-                    <img class="photos" src="images/phone.jfif"></img>
-                </div>
-              <div class="w-100"></div>
-              <div class="col">
-                  Column
-                </div>
-              <div class="col">
-                  Column
-                </div>
-            </div>
-          </div>
+<body>
+  <h1 class="title">Study Guide</h1>
 
-    </body>
+  <p class="info">Here you can study for the game.</p>
+
+  <div class="slideshow-container">
+
+    <div class="mySlides fade">
+      <div class="grid-container">
+        <div class="grid-item" id="1">1</div>
+        <div class="grid-item" id="2">2</div>
+        <div class="grid-item" id="3">3</div>
+        <div class="grid-item" id="4">4</div>
+        <div class="grid-item" id="5">5</div>
+        <div class="grid-item" id="6">6</div>
+        <div class="grid-item" id="7">7</div>
+        <div class="grid-item" id="8">8</div>
+      </div>
+      <div class="text">Caption Text</div>
+    </div>
+
+    <br>
+
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+
+    <script src="scripts/guide.js"></script>
+</body>
+
 </html>
