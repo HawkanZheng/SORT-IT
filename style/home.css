@@ -1,0 +1,33 @@
+.button {
+    border-radius: 3vw;
+    border-color: lightcyan;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    background-color: #4eb5f1;
+    text-align: center;
+    transition: all 0.2s;
+    width: 30vw;
+    height: 10vh;
+    margin-bottom: 5vh;
+}
+
+.buttonHolder {
+    text-align: center;
+    margin-top: 25%;
+}
+
+.button:hover {
+    background-color: #4095c6;
+}
+
+@media all and (max-width:30em) {
+    .button {
+        display: block;
+        margin: 0.2em auto;
+    }
+}
+
+body {
+    background-color: lightcyan;
+}
