@@ -6,20 +6,22 @@
     <link rel="stylesheet" type="text/css" href="style/gamepage.css"/>
     <title>Game</title>
 </head>
-<button id="compost">Compost</button>
-<button id="paper">Plastic & Paper</button>
-<button id="ewaste">E-waste</button>
-<button id="trash">Trash</button>
-<button id="end">End</button>
+<button id="compost" onclick="answerSelect()">Compost</button>
+<button id="paper" onclick="answerSelect()">Plastic & Paper</button>
+<button id="ewaste" onclick="answerSelect()">E-waste</button>
+<button id="trash" onclick="answerSelect()">Trash</button>
+<button id="quit" onclick="quitGame()">Quit</button>
 <img src="images/brokenphone.png" alt="image" id="question">
 
 <body>
     <div id="score">
         <h1>Score<br/>0</h1>
     </div>
-    <div id="timer">
-        <h1>60</h1>
+    <div>
+        <h1 id="timer">60</h1>
     </div>
+    <!-- JS file link -->
+    <script src="scripts/gamepage.js"></script>
 </body>
 
 </html>

@@ -3,6 +3,7 @@ button{
     height: 25vh;
     position: absolute;
     font-weight: bolder;
+    font-size: 5vw;
 }
 
 #compost{
@@ -37,12 +38,13 @@ button{
     transform: translate(-50%, -50%);
 }
 
-#end{
+#quit{
     width: 10vh;
     height: 3vh;
     top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-size: 15px;
 }
 
 #score{
