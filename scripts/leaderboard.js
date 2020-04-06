@@ -11,7 +11,7 @@ let config = {
     appId: "1:254451731238:web:ff1e74fe12719d02740fe7"
   };
   // Initialize Firebase
-  firebase.initializeApp(config);
+firebase.initializeApp(config);
 
 // Get a reference to the database server.
 let db = firebase.firestore();
@@ -26,20 +26,20 @@ function playGame() {
 // Welcome message 
 //------------------------------------------------------------
 
-// Create a users reference.
-let ref = db.collection('Users');
+// // Create a users reference.
+// let ref = db.collection('Users');
 
-function welcome() {
-    let user = auth.currentUser;
+// function welcome() {
+//     let user = auth.currentUser;
 
-    ref.get().then(function(doc) {
-        console.log(doc.data());
-    })
+//     ref.get().then(function(doc) {
+//         console.log(doc.data());
+//     })
 
-    let message = document.getElementById('welcome');
+//     let message = document.getElementById('welcome');
 
-    message.innerHTML = 'Welcome to BlahBlahBlah ' + user.email;
-}
+//     message.innerHTML = 'Welcome to BlahBlahBlah ' + user.email;
+// }
 
 //------------------------------------------------------------
 // Leaderboards
@@ -58,7 +58,7 @@ let boards = document.getElementById('leaderboards');
 function leaderboard() {
     
     // Organize users based on their score.
-    let topTen = leaders.orderBy('score', 'desc').limit(TOP_PLAYERS);
+    let topTen = leaders.orderBy('Score', 'desc').limit(TOP_PLAYERS);
 
     let place = 1; // Rank amongst other users.
 
@@ -69,9 +69,9 @@ function leaderboard() {
 
             // Create a cell element.
             boards.innerHTML += '<tr>'
-            + '<td>' + i + '<td>'
-            + '<td' + players.username + '<td>'
-            + '<td>' + players.score + '<td>'
+            + '<td>' + place + '<td>'
+            + '<td' + players.Name + '<td>'
+            + '<td>' + players.Score + '<td>'
             + '<tr>';
             
             // increment the users rank.
