@@ -1,18 +1,72 @@
 
-table {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+table.center {
+    font-family: 'Roboto', sans-serif;
     border-collapse: collapse;
     width: 100%;
+    height: 100%;
   }
+
+.table-holder {
+    text-align: center;
+    margin-top: 10%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
   
   th, td {
-    padding: 8px;
-    text-align: left;
+    padding: 30px;
+    text-align: center;
     border-bottom: 1px solid #ddd;
   }
+
+  th {
+      background-color: #cfdbd0;
+      font-size: 2em;
+  }
+
+  td {
+      font-size: 1.5em;
+  }
   
-  tr:hover {background-color:#a5bbec;}
+  tr:hover {background-color:#e0f2f3;}
 
   #board {
       text-align: center;
+      font-family: 'Roboto', sans-serif;
+      font-size: 2em;
   }
+
+  /* Home Button */
+
+  .home-btn {
+    border-radius: 3vw;
+    border-color: lightcyan;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 3em;
+    color: white;
+    background-color: #4eb5f1;
+    text-align: center;
+    transition: all 0.2s;
+    width: 50vw;
+    height: 10vh;
+    margin-bottom: 5vh;
+}
+
+.home-btn-holder {
+    text-align: center;
+    margin-top: 25%;
+}
+
+.home-btn:hover {
+    background-color: #4095c6;
+    cursor: pointer;
+}
+
+@media all and (max-width:30em) {
+    .home-btn {
+        display: block;
+        margin: 0.2em auto;
+    }
+}

@@ -15,20 +15,24 @@
 <body>
     <!-- leaderboard title and table -->
     <h2 id="board">Leaderboard</h2>
-    <div class="table">
-        <table class="ranking" id="leaderboards">
-            <thead class="thead-dark">
+    <div class="table-holder">
+        <table class="ranking center" id="leaderboards">
                 <tr>
                     <th>Rank</th>
                     <th>Name</th>
                     <th>Score</th>
+                    <th>School</th>
                 </tr>
-            </thead>
         </table>
     </div>
-    <br><br>
+    <div class="home-btn-holder">
+    <div>
+        <button class="home-btn" onclick="goHome()">Home</button>
+    </div>
+    </div>
 
     <script src="/scripts/leaderboard.js"></script>
+    <script src="/scripts/firebase-admin.js"></script>
 </body>
 
 </html>
