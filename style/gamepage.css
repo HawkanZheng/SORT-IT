@@ -57,7 +57,7 @@ button{
     transform: translate(-50%, -50%);
 }
 
-#timer{
+#clock{
     width:20vw;
     height:20vh;
     position: absolute;
@@ -65,4 +65,17 @@ button{
     top: 15%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+#startClock{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100px;
+    font-weight: bolder;
+}
+
+.gameplay{
+    display: none;
 }

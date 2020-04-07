@@ -16,10 +16,15 @@ let startTime = 3;
 let easyTime = 30;
 //Time for hard 45 second timer
 let hardTime = 45;
-let easyTimer = setInterval(easyCountdown, SECONDS);
-let hardTimer = setInterval(hardCountdown, SECONDS);
-//Timer
-let timer = document.getElementById("timer");
+//Easy and Hard timers
+let easyTimer;
+let hardTimer;
+//Start Timer
+let startTimer = setInterval(startCountdown, SECONDS);
+//Start clock timer
+let startClock = document.getElementById("startClock");
+//Game clock timer
+let gameClock = document.getElementById("clock");
 //User's score
 let score = 0;
 
@@ -34,7 +39,7 @@ let easyCompostArr = [];
 //Array for plastic and paper img src on easy difficulty, size 4
 let easyPlaPapArr = [];
 //Array for e-waste img src on easy difficulty, size 4
-let easyEwasteArr = [];
+let easyEwasteArr = ["images/ewaste/cellphone.png", "images/ewaste/laptop.png", "images/ewaste/controller.png", "images/ewaste/headphone.png"];
 //Array for trash img src on easy difficulty, size 4
 let easyTrashArr = [];
 //Array for compost img src on easy difficulty, size 8
@@ -42,14 +47,15 @@ let hardCompostArr = [];
 //Array for plastic and paper img src on easy difficulty, size 8
 let hardPlaPapArr = [];
 //Array for e-waste img src on easy difficulty, size 8
-let hardEwasteArr = [];
+let hardEwasteArr = ["images/ewaste/cellphone.png", "images/ewaste/laptop.png", "images/ewaste/controller.png", "images/ewaste/headphone.png",
+                    "images/ewaste/tv.png", "images/ewaste/microwave.png", "images/ewaste/keyboard.png", "images/ewaste/battery.png"];
 //Array for trash img src on easy difficulty, size 8
 let hardTrashArr = [];
 
-//------------------------------FUNCTIONS--------------------------------------//
+//------------------------------TIMER FUNCTIONS--------------------------------------//
 //Countdown function for easy timer
 function easyCountdown(){
-    timer.innerHTML = easyTime;
+    gameClock.innerHTML = easyTime;
     if(easyTime == 0){
         clearInterval(easyTimer);
         //Game over
@@ -60,7 +66,7 @@ function easyCountdown(){
 }
 //Countdown function for hard timer
 function hardCountdown(){
-    timer.innerHTML = hardTime;
+    gameClock.innerHTML = hardTime;
     if(hardTime == 0){
         clearInterval(hardTimer);
         //Game over
@@ -72,13 +78,20 @@ function hardCountdown(){
 
 //Countdown for start game
 function startCountdown(){
+    startClock.innerHTML = startTime;
     if(startTime == 0){
         //Show GO!
-
+        startClock.innerHTML = "GO!";
+        startTime--;
+    } else if(startTime < 0) {
+        clearInterval(startTimer);
         //Hide start coundown and show gameplay UI
-        startGame();
+        startGame(); 
+    } else {
+        startTime--;
     }
 }
+
 
 //--------------------------ONCLICK FUNCTIONS-------------------------------//
 //Onclick function for the four answer buttons
@@ -93,11 +106,22 @@ function answerSelect(){
 
 //Onclick function to quit game and return to homepage
 function quitGame(){
-    location.reload("homepage.html");
+    location.replace("homepage.html");
 }
 
 //Start game
 function startGame(){
+    //Dipslay game UI
+    showGame();
+    //Start easy timer
+    if(difficulty == 0){
+        easyTimer = setInterval(easyCountdown, SECONDS);
+    //Start hard timer        
+    } else {
+        hardTimer = setInterval(hardCountdown, SECONDS);
+    }
+    
+    
     setRandomQuestion();
 }
 
@@ -166,6 +190,16 @@ function setRandomQuestion(){
                 question.src = getRandomQuestion(hardTrashArr);
             }
             break;  
+    }
+}
 
+//Hide start clock and show game UI
+function showGame(){
+    //Hide start clock
+    startClock.style.display = "none";
+    //Show game UI
+    let gameUI = document.getElementsByClassName("gameplay");
+    for(let i = 0; i < gameUI.length; i++){
+        gameUI[i].style.display = "block";
     }
 }
