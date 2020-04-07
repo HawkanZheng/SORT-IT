@@ -7,38 +7,18 @@
 </head>
 
 <body>
-
-  <div class="buttonHolder">
-    <div>
-      <button class="button" onclick="">Start Game</button>
-    </div>
-    <div>
-      <button class="button" onclick="">Study Guide</button>
-    </div>
-    <div>
-      <button class="button" onclick="">Leaderboard</button>
-    </div>
-  </div>
-  <script src="/scripts/login.js"></script>
-</body>
-
           <div class="buttonHolder">
             <div>
-              <button class="button" onclick="myAct()">Start Game</button>
+              <button class="button" onclick="play()">Start Game</button>
             </div>
             <div>
-              <button class="button" onclick="">Study Guide</button>
+              <button class="button" onclick="studyGuide()">Study Guide</button>
             </div>
             <div>
-              <button class="button" onclick="">Leaderboard</button>
+              <button class="button" onclick="checkLeaders()">Leaderboard</button>
             </div>
           </div>
           <script src="/scripts/login.js"></script>
-
-          <script>
-            function myAct() {
-              location.replace('myAccount.html');
-            }
-          </script>
+          <script src="/scripts/navigation.js"></script>
     </body>
 </html>
