@@ -48,14 +48,16 @@ function playGame() {
 // Max number of players to display on leaderboard.
 const TOP_PLAYERS = 10;
 
-// Create a leaderboards reference.
-let leaders = db.collection('Leaderboard');
-
 // Get leaderboard element.
 let boards = document.getElementById('leaderboards');
 
+//------------------ Default Shows Easy Leaderboard ------------------------//
+
 // Add leaderboard information to the page.
 function leaderboard() {
+
+    // Create a leaderboards reference.
+    let leaders = db.collection('Easy_Leaderboard');
 
     // Organize users based on their score.
     let topTen = leaders.orderBy('Score', 'desc').limit(TOP_PLAYERS);
@@ -84,6 +86,37 @@ function leaderboard() {
 // Call the function.
 leaderboard();
 
+//------------------ Choose to show Hard Leaderboard ------------------------//
+
+// Add leaderboard information to the page.
+function hardLeaders() {
+
+    // Create a hard leaderboard reference
+    let leaders = db.collection('Hard_Leaderboard');
+
+    // Organize users based on their score.
+    let topTen = leaders.orderBy('Score', 'desc').limit(TOP_PLAYERS);
+
+    let place = 1; // Rank amongst other users.
+
+    // Get the top 10 players based on their score, in descending order.
+    topTen.get().then((snapshot) => {
+        snapshot.docs.forEach(doc => {
+            let players = doc.data();
+
+            // Create a cell element.
+            boards.innerHTML += '<tr>' +
+                '<td>' + place + '<td>' +
+                players.Name + '<td>' +
+                players.Score + '<td>' +
+                players.School + '<td>'+
+                '<tr>';
+
+            // increment the users rank.
+            place++;
+        })
+    })
+}
 
 //------------------------------------------------------
 // Add Game
