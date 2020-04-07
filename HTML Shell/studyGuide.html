@@ -1,33 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <!----------------------------------------------->
+  <!-- CSS: Bootstrap, Firebase, other API -->
+  <!----------------------------------------------->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link href="/style/guide.css" rel="stylesheet" type="text/css">
 </head>
+
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">  
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="#section1">Compost</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#section2">Electronic Waste</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#section3">Paper/Plastic</a>
-    </li>
-  </ul>
-</nav>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">WebSiteName</a>
+      </div>
+      <div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li><a href="#section1">Compost</a></li>
+            <li><a href="#section2">Electronic Waste</a></li>
+            <li><a href="#section3">Paper/Plastic</a></li>
+            <li><a href="#section4">Trash</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-<div id="section1" class="container-fluid bg-success" style="padding-top:70px;padding-bottom:70px">
-  <h1>Compost<img class="icons" src="/images/compostbin.png"></h1>
+  <div id="section1" class="container-fluid compost section">
+    <h1>Compost<img class="icons" src="/images/compostbin.png"></h1>
+    <div class="grid-container">
+      <div class="grid-item">
+        <img class="icons" src="/images/compost/apple.png">
+      </div>
+      <div class="grid-item" id="2">
+        <img class="icons" src="/images/compost/bones.png">
+      </div>
+      <div class="grid-item" id="3">
+        <img class="icons" src="/images/compost/strawberry.png">
+      </div>
+      <div class="grid-item" id="4">
+        <img class="icons" src="/images/compost/watermelon.png">
+      </div>
+      <div class="grid-item" id="5">
+        <img class="icons" src="/images/compost/banana.png">
+      </div>
+      <div class="grid-item" id="6">
+        <img class="icons" src="/images/compost/fishbone.png">
+      </div>
+      <div class="grid-item" id="7">
+        <img class="icons" src="/images/compost/leaves.png">
+      </div>
+      <div class="grid-item" id="8">
+        <img class="icons" src="/images/compost/eggshell.png">
+      </div>
+    </div>
+  </div>
+  <div id="section2" class="container-fluid ewaste section">
+    <h1>Electronic Waste<img class="icons" src="/images/e-waste.png"></h1>
     <div class="grid-container">
       <div class="grid-item">
         <img class="icons" src="/images/e-waste/keyboard.png">
@@ -51,86 +94,71 @@
         <img class="icons" src="/images/e-waste/battery.png">
       </div>
       <div class="grid-item" id="8">
-        <img class="icons" src="/images/e-waste/controller.png">
+        <img class="icons" src="/images/e-waste/dryer.png">
       </div>
-      <div class="grid-item" id="8">
-        <img class="icons" src="/images/e-waste/controller.png">
-      </div>
-      <div class="grid-item" id="8">
-        <img class="icons" src="/images/e-waste/controller.png">
-      </div>
-    </div>
-</div>
-<div id="section2" class="container-fluid bg-warning" style="padding-top:70px;padding-bottom:70px">
-  <h1>Electronic Waste<img class="icons" src="/images/e-waste.png"></h1>
-  <div class="grid-container">
-    <div class="grid-item">
-      <img class="icons" src="/images/e-waste/keyboard.png">
-    </div>
-    <div class="grid-item" id="2">
-      <img class="icons" src="/images/e-waste/headphone.png">
-    </div>
-    <div class="grid-item" id="3">
-      <img class="icons" src="/images/e-waste/laptop.png">
-    </div>
-    <div class="grid-item" id="4">
-      <img class="icons" src="/images/e-waste/microwave.png">
-    </div>
-    <div class="grid-item" id="5">
-      <img class="icons" src="/images/e-waste/tv.png">
-    </div>
-    <div class="grid-item" id="6">
-      <img class="icons" src="/images/e-waste/cellphone.png">
-    </div>
-    <div class="grid-item" id="7">
-      <img class="icons" src="/images/e-waste/battery.png">
-    </div>
-    <div class="grid-item" id="8">
-      <img class="icons" src="/images/e-waste/dryer.png">
-    </div>
-    <div class="grid-item" id="8">
-      <img class="icons" src="/images/e-waste/controller.png">
-    </div>
-    <div class="grid-item" id="8">
-      <img class="icons" src="/images/e-waste/controller.png">
     </div>
   </div>
-</div>
-<div id="section3" class="container-fluid bg-secondary" style="padding-top:70px;padding-bottom:70px">
-  <h1>Paper/Plastic<img class="icons" src="/images/paper plastic.png"></h1>
-  <div class="grid-container">
-    <div class="grid-item">
-      <img class="icons" src="/images/e-waste/keyboard.png">
+  <div id="section3" class="container-fluid paper section">
+    <h1>Paper/Plastic<img class="icons" src="/images/paper plastic.png"></h1>
+    <div class="grid-container">
+      <div class="grid-item">
+        <img class="icons" src="/images/p&p/waterbottle.png">
+      </div>
+      <div class="grid-item" id="2">
+        <img class="icons" src="/images/p&p/box.png">
+      </div>
+      <div class="grid-item" id="3">
+        <img class="icons" src="/images/p&p/milk.png">
+      </div>
+      <div class="grid-item" id="4">
+        <img class="icons" src="/images/p&p/newspaper.png">
+      </div>
+      <div class="grid-item" id="5">
+        <img class="icons" src="/images/e-waste/tv.png">
+      </div>
+      <div class="grid-item" id="6">
+        <img class="icons" src="/images/e-waste/cellphone.png">
+      </div>
+      <div class="grid-item" id="7">
+        <img class="icons" src="/images/e-waste/battery.png">
+      </div>
+      <div class="grid-item" id="8">
+        <img class="icons" src="/images/e-waste/controller.png">
+      </div>
     </div>
-    <div class="grid-item" id="2">
-      <img class="icons" src="/images/e-waste/headphone.png">
+  </div>
+  <div id="section4" class="container-fluid trash section">
+    <h1>Trash<img class="icons" src="/images/trash.png"></h1>
+    <div class="grid-container">
+      <div class="grid-item">
+        <img class="icons" src="/images/trash/chipbag.png">
+      </div>
+      <div class="grid-item" id="2">
+        <img class="icons" src="/images/e-waste/headphone.png">
+      </div>
+      <div class="grid-item" id="3">
+        <img class="icons" src="/images/e-waste/laptop.png">
+      </div>
+      <div class="grid-item" id="4">
+        <img class="icons" src="/images/e-waste/microwave.png">
+      </div>
+      <div class="grid-item" id="5">
+        <img class="icons" src="/images/e-waste/tv.png">
+      </div>
+      <div class="grid-item" id="6">
+        <img class="icons" src="/images/e-waste/cellphone.png">
+      </div>
+      <div class="grid-item" id="7">
+        <img class="icons" src="/images/e-waste/battery.png">
+      </div>
+      <div class="grid-item" id="8">
+        <img class="icons" src="/images/e-waste/dryer.png">
+      </div>
     </div>
-    <div class="grid-item" id="3">
-      <img class="icons" src="/images/e-waste/laptop.png">
-    </div>
-    <div class="grid-item" id="4">
-      <img class="icons" src="/images/e-waste/microwave.png">
-    </div>
-    <div class="grid-item" id="5">
-      <img class="icons" src="/images/e-waste/tv.png">
-    </div>
-    <div class="grid-item" id="6">
-      <img class="icons" src="/images/e-waste/cellphone.png">
-    </div>
-    <div class="grid-item" id="7">
-      <img class="icons" src="/images/e-waste/battery.png">
-    </div>
-    <div class="grid-item" id="8">
-      <img class="icons" src="/images/e-waste/controller.png">
-    </div>
-    <div class="grid-item" id="8">
-      <img class="icons" src="/images/e-waste/controller.png">
-    </div>
-    <div class="grid-item" id="8">
-      <img class="icons" src="/images/e-waste/controller.png">
-    </div>
-</div>
+    </br>
+  </div>
 
-<script src="scripts/guide.js"></script>
+  <script src="scripts/guide.js"></script>
 </body>
+
 </html>

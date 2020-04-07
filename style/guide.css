@@ -1,30 +1,27 @@
 .grid-container {
-    display: grid;
-    grid-template-columns: auto auto;
-    background-color: black;
-    padding: 10px;
-  }
-  .grid-item {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-  }
+  display: grid;
+  grid-template-columns: auto auto;
+  background-color: black;
+  padding: 10px;
+}
 
-  /* Photos */
-  .icons {
-    width: 60px;
-  }
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
 
-  .title {
-      text-align: center;
-      color: gray;
-  }
+/* Photos */
+.icons {
+  width: 60px;
+}
 
-  .info {
-      text-align: center;
-  }
+.title {
+  text-align: center;
+  color: gray;
+}
 
 /* Caption text */
 .text {
@@ -37,38 +34,40 @@
   text-align: center;
 }
 
-/* The dots/bullets/indicators */
-.dot:hover {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
+body {
+  position: relative;
+  text-align: center;
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
+  }
 }
 
 @keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
+  }
 }
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
-}
 
-body {
-  position: relative; 
+  .prev,
+  .next,
+  .text {
+    font-size: 11px
+  }
 }
-
 
 /* Info about the picture on hover. */
 .text {
@@ -83,3 +82,30 @@ body {
   text-align: center;
 }
 
+/* Each section of the page */
+.section {
+  padding-top:60px;
+  padding-bottom:60px;
+}
+
+/* Compost Section */
+.compost {
+  background-color: green;
+}
+
+/* Compost Section */
+.ewaste {
+  background-color: lightslategrey;
+}
+
+/* Compost Section */
+.paper {
+  background-color: lightskyblue;
+}
+
+/* Compost Section */
+.trash {
+  background-color: brown;
+}
+
+/* Info on each icon after hover */
