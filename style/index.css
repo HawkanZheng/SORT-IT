@@ -1,0 +1,54 @@
+.login-content{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	text-align: center;
+}
+
+
+.buttons {
+    width: 15vw;
+    height: 4vh;
+    font-size: 2vh;
+    background-color: lightcyan;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+input.div {
+    display: grid;
+    grid-template-columns: 7% 93%;
+    margin: 25px;
+    padding: 5px;
+    border-bottom: 2px solid #d9d9dd;
+}
+
+.studyGuide {
+    position: absolute;
+    top: 52%;
+}
+
+.leaderboard {
+    position: absolute;
+    top: 59%;
+}
+
+.backLogo {
+    height: 8vh;
+    width: 7vw;
+}
+
+.myAccount {
+    margin-right: 2vh;
+    float: right;
+    text-align:center;
+    padding:5px;
+    font-size: 4vh;
+}
+
+.profile {
+    text-align: left;
+    height: 8vh;
+    width: 7vw;
+}
+

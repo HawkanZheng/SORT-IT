@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / SignUp Page</title>
+    
+    <!----------------------------------------------->
+    <!-- CSS: Bootstrap, Firebase, other API -->
+    <!----------------------------------------------->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+    <link href="/style/index.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div>
+        <h2>WELCOME</h2>
+        <div>
+            <input type="text" placeholder="name" id="name">
+        </div>
+        <div>
+            <input type="text" placeholder="school" id="school">
+        </div>
+        <div>
+        <input type="text" placeholder="username" id="email">
+        </div>
+        <input type="password" placeholder="password" id="password">
+        <br>
+        <button class="buttons" id="login" onclick="login()">Login</button>
+        <button class="buttons" id="signup" onclick="createUser()">Sign Up</button>
+    </div>
+
+    <script src="/scripts/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Leaderboard</title>
+    <!----------------------------------------------->
+    <!-- CSS: Bootstrap, Firebase, other API -->
+    <!----------------------------------------------->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+    <link href="/style/board.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!-- leaderboard title and table -->
+    <h2 id="board">Leaderboard</h2>
+    <div class="table-holder">
+        <table class="ranking center" id="leaderboards">
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Score</th>
+                    <th>School</th>
+                </tr>
+        </table>
+    </div>
+    <div class="home-btn-holder">
+    <div>
+        <button class="home-btn" onclick="goHome()">Home</button>
+    </div>
+    </div>
+
+    <script src="/scripts/leaderboard.js"></script>
+    <script src="/scripts/firebase-admin.js"></script>
+</body>
+
+</html>
