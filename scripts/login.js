@@ -153,9 +153,9 @@ function logout() {
   }).catch(displayError);
 }
 
-// //------------------------------------------------------
-// // Update password
-// //------------------------------------------------------ 
+//------------------------------------------------------
+// Update password
+//------------------------------------------------------ 
 
 function reAuth() {
 
@@ -166,9 +166,10 @@ function reAuth() {
   let user = firebase.auth().currentUser;
 
   // Grab the password they entered.
-  let credential = document.getElementById("passAgain").value;
+  let credential = document.getElementById("oldPass").value;
 
   // Prompt the user to re-provide their sign-in credentials
+
   user.reauthenticateWithCredential(credential).then(function () {
     // User re-authenticated.
     console.log('user re=authenticated.');
@@ -180,8 +181,15 @@ function reAuth() {
 
   // If they put in the correct password, promt to type in new pasword.
   if (knowPass) {
+
+    let newPassword;
     // Get the new password.
-    let newPassword = document.getElementById("newPassword").value;
+    let newPasswordOne = document.getElementById("newPassw").value;
+    let newPasswordTwo = document.getElementById("confirm").value;
+
+    if (newPasswordOne == newPasswordTwo) {
+      newPassword = newPasswordOne;
+    }
 
     // Update the pasword in firestore.
     user.updatePassword(newPassword).then(function () {
@@ -216,26 +224,16 @@ function reAuth() {
 //   console.log('error');
 // });
 
-// // //------------------------------------------------------
-// // // Get User's profile information
-// // //------------------------------------------------------ 
+// //------------------------------------------------------
+// // Get User's profile information
+// //------------------------------------------------------ 
 
-// // // var user = firebase.auth().currentUser;
-// // // var name, email, photoUrl, uid, emailVerified;
+// // var user = firebase.auth().currentUser;
+// // var name, email, photoUrl, uid, emailVerified;
 
-// // if (user != null) {
-// //   name = user.displayName;
-// //   email = user.email;
-// //   emailVerified = user.emailVerified;
-// //   uid = user.uid;
-// // }
-
-// // idToken comes from the client app
-// admin.auth().verifyIdToken(idToken)
-//   .then(function(decodedToken) {
-//     let uid = decodedToken.uid;
-//     console.log(uid);
-//     // ...
-//   }).catch(function(error) {
-//     // Handle error
-//   });
+// if (user != null) {
+//   name = user.displayName;
+//   email = user.email;
+//   emailVerified = user.emailVerified;
+//   uid = user.uid;
+// }
