@@ -1,5 +1,5 @@
 
-table.center {
+table {
     font-family: 'Roboto', sans-serif;
     border-collapse: collapse;
     width: 100%;
@@ -17,36 +17,32 @@ table.center {
   th, td {
     padding: 30px;
     text-align: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 2px solid rgb(70, 63, 63);
   }
 
   th {
-      background-color: #cfdbd0;
+      background-color: #A9BA9D;
       font-size: 2em;
   }
 
   td {
       font-size: 1.5em;
   }
-  
-  tr:hover {background-color:#e0f2f3;}
 
   #board {
       text-align: center;
       font-family: 'Roboto', sans-serif;
-      font-size: 2em;
+      font-size: 3em;
   }
 
   /* Home Button */
-
   .home-btn {
     border-radius: 3vw;
-    border-color: lightcyan;
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
     font-size: 3em;
     color: white;
-    background-color: #4eb5f1;
+    background-color: #9dc183;
     text-align: center;
     transition: all 0.2s;
     width: 50vw;
@@ -60,7 +56,7 @@ table.center {
 }
 
 .home-btn:hover {
-    background-color: #4095c6;
+    background-color: #A9BA9D;
     cursor: pointer;
 }
 
@@ -69,4 +65,10 @@ table.center {
         display: block;
         margin: 0.2em auto;
     }
+}
+
+body {
+    background-image: url("/images/leader_back.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
