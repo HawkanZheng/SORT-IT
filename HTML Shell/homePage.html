@@ -1,42 +1,24 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Home Page</title>
-        <link href="/style/home.css" rel="stylesheet" type="text/css">
-    </head>
 
-    <body>
+<head>
+  <title>Home Page</title>
+  <link href="/style/home.css" rel="stylesheet" type="text/css">
+</head>
 
-        <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="#">
-              <img class="backLogo" src="/images/recycle.png" width="50" height="50" class="d-inline-block align-top" alt="Logo">
-            </a>
-            <div style= float:right; text-align:center; padding:5px;>
-            <img class="profile" src="/images/profile.png" alt="my account">
-          </div>
-          </nav>
-
+<body>
           <div class="buttonHolder">
             <div>
               <button class="button" onclick="play()">Start Game</button>
             </div>
             <div>
-              <button class="button" onclick="myAct()">Study Guide</button>
+              <button class="button" onclick="studyGuide()">Study Guide</button>
             </div>
             <div>
-              <button class="button" onclick="">Leaderboard</button>
+              <button class="button" onclick="checkLeaders()">Leaderboard</button>
             </div>
           </div>
           <script src="/scripts/login.js"></script>
-
-          <script>
-            function myAct() {
-              location.replace('myAccount.html');
-            }
-
-            function play() {
-              location.replace('gamepage.html');
-            }
-          </script>
+          <script src="/scripts/navigation.js"></script>
     </body>
 </html>
