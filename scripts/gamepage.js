@@ -1,3 +1,19 @@
+//--------------------------------------------------------------
+// Your web app's Firebase configuration
+//--------------------------------------------------------------
+let config = {
+    apiKey: "AIzaSyCI3tPf61sTY3nLoHJG7P8TGBakZU69o3w",
+    authDomain: "comp-1800-94b18.firebaseapp.com",
+    databaseURL: "https://comp-1800-94b18.firebaseio.com",
+    projectId: "comp-1800-94b18",
+    storageBucket: "comp-1800-94b18.appspot.com",
+    messagingSenderId: "254451731238",
+    appId: "1:254451731238:web:ff1e74fe12719d02740fe7"
+};
+// Initialize Firebase
+firebase.initializeApp(config);
+
+
 //---------------------------------CONSTANTS-----------------------------------//
 //1 second in milliseconds
 const SECONDS = 1000;
@@ -120,8 +136,7 @@ function startGame(){
     } else {
         hardTimer = setInterval(hardCountdown, SECONDS);
     }
-    
-    
+  
     setRandomQuestion();
 }
 
@@ -203,3 +218,160 @@ function showGame(){
         gameUI[i].style.display = "block";
     }
 }
+
+//------------------------------------------------------
+// Add Game
+//------------------------------------------------------ 
+
+function addGame(outcome) {
+
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // Get the currently signed in users UID
+            let id = user.uid;
+
+            // Create reference for database.
+            let db = firebase.firestore();
+
+            // Create reference for Users collection.
+            let ref = db.collection('Users');
+
+            // Get user data.
+            ref.doc(id).get().then(function (doc) {
+
+                let highScore = doc.data().HighScore; // Assign the users current wins
+                let gamesPlayed = doc.data().GamesPlayed; // Grab number of games played.
+
+                gamesPlayed++; // increment games played.
+
+                // Create a time stamp for the game.
+                let date = new Date();
+                let timestamp = date.getTime();
+
+                // Check if the game score is greater than the users current highscore.
+                if (outcome > highScore) {
+                    highScore = outcome; // Increment wins
+                } else {
+                    highScore = prevScore; // Increment losses
+                }
+
+                // Update the users wins, loses, and last time played.
+                ref.doc(id).update({
+                    'LastTimePlayed': timestamp,
+                    'GamesPlayed': gamesPlayed,
+                    'Scores.Hard': highScore,
+                    'Scores.Easy': highScore
+                }).then(function () {
+                    // Send to landing page.
+                    location.replace('homePage.html');
+
+                    // log an error in the console.
+                }).catch(function (error) {
+                    console.error('Error creating game: ', error);
+
+                    // Send to landing page.
+                    location.replace('homePage.html');
+                });
+            })
+        } else {
+            // If no user is signed in.
+            console.log('no user');
+        }
+    })
+}
+
+//------------------------------------------------------
+// Add Score to Easy Leaderboard
+//------------------------------------------------------ 
+
+// Add the users score to the Easy_Leaderboard collection.
+function addEasyGame(easyScore) {
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // Get the currently signed in users UID
+            let id = user.uid;
+    
+            // Create reference for database.
+            let db = firebase.firestore();
+    
+            // Create reference for Users collection.
+            let ref = db.collection('Easy_Leaderboard');
+    
+            // Get user data.
+            ref.doc(id).then(function (doc) {
+    
+                // Update the users wins, loses, and last time played.
+                ref.doc(id).set({
+                    'Name': timestamp,
+                    'School': gamesPlayed,
+                    'Score': easyScore // Set to game score.
+                }).then(function () {
+                    // Send to landing page.
+                    location.replace('homePage.html');
+    
+                    // log an error in the console.
+                }).catch(function (error) {
+                    console.error('Error adding game: ', error);
+    
+                    // Send to landing page.
+                    location.replace('homePage.html');
+                });
+            })
+        } else {
+            // If no user is signed in.
+            console.log('no user');
+        }
+    })
+}
+
+//------------------------------------------------------
+// Add Score to Hard Leaderboard
+//------------------------------------------------------ 
+
+// Add the users score to the Hard_Leaderboard collection.
+function addHardGame(hardScore) {
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // Get the currently signed in users UID
+            let id = user.uid;
+            
+            console.log(id);
+            // Create reference for database.
+            let db = firebase.firestore();
+    
+            // Create reference for Users collection.
+            let ref = db.collection('Hard_Leaderboard');
+    
+            ref.doc(id).get().then(function (doc) {
+
+                console.log(user);
+                
+                let name = doc.data().Name;
+                let school = doc.data().School;
+
+                // Update the users wins, loses, and last time played.
+                ref.doc().set({
+                    'Name': name,
+                    'School': school,
+                    'Score': hardScore // Set to game score.
+                }).then(function () {
+                    // Send to landing page.
+                    location.replace('homePage.html');
+    
+                    // log an error in the console.
+                }).catch(function (error) {
+                    console.error('Error adding game: ', error);
+    
+                    // Send to landing page.
+                    location.replace('homePage.html');
+                });
+            })
+        } else {
+            // If no user is signed in.
+            console.log('no user');
+        }
+    })
+}
+
+addHardGame(12);
+
