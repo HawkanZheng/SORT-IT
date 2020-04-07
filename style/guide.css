@@ -1,7 +1,7 @@
 .grid-container {
     display: grid;
     grid-template-columns: auto auto;
-    background-color: #2196F3;
+    background-color: black;
     padding: 10px;
   }
   .grid-item {
@@ -13,8 +13,8 @@
   }
 
   /* Photos */
-  .img {
-
+  .icons {
+    width: 60px;
   }
 
   .title {
@@ -38,18 +38,7 @@
 }
 
 /* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
+.dot:hover {
   background-color: #717171;
 }
 
@@ -75,3 +64,22 @@
 @media only screen and (max-width: 300px) {
   .prev, .next,.text {font-size: 11px}
 }
+
+body {
+  position: relative; 
+}
+
+
+/* Info about the picture on hover. */
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
