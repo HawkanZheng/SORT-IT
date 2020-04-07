@@ -13,7 +13,7 @@ let config = {
 // Initialize Firebase
 firebase.initializeApp(config);
 
-// Get a reference to the database server.
+// // Get a reference to the database server.
 let db = firebase.firestore();
 let auth = firebase.auth();
 
@@ -22,58 +22,126 @@ let auth = firebase.auth();
 //------------------------------------------------------ 
 function createUser() {
 
-  let theEmail = document.getElementById('username');
+  // Grabs dom element references.
+  let theEmail = document.getElementById('email');
   let pass = document.getElementById('password');
 
+  // Sets the values for the email and password.
   let email = theEmail.value;
   let password = pass.value;
 
   auth.createUserWithEmailAndPassword(email, password).then(function () {
 
-    // Send them to landing page
-    location.replace('studyGuide.html');
+    // Gives authorization to log in if the email and password are valid.
+    auth.signInWithEmailAndPassword(email, password).then(function () {
+
+      // reference to firebase authentication.
+      let user = firebase.auth().currentUser;
+
+      if (user == null) {
+        // User not signed in.
+        console.log("not logged in");
+      } else {
+        // user is signed in, send to game page.
+        window.location.replace('homePage.html');
+      }
+    }).catch(function (error) {
+      window.alert(error.message);
+    });
 
   }).catch(function (error) {
     // Handle Errors here.
     if (password.length < 6) {
       window.alert('Password needs to be at least 6 characters.');
     }
-    window.alert('That is Invalid');
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // ...
+    window.alert(error.message);
   });
 }
 
 //------------------------------------------------------
+// Send new User to database
+//------------------------------------------------------ 
+
+// Reference to the authentication in firestore.
+let user = firebase.auth().currentUser;
+
+// Declares variables used to store user info in the database.
+let email, name, school;
+const START_SCORE = 0;
+
+// Checks for changes in the signed in user.
+firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+    let checkUser = true;
+    db.collection('Users').get().then((snapshot) => {
+      snapshot.docs.forEach(doc => {
+        if (doc.data().UID == user.uid) {
+          checkUser = false;
+        }
+      });
+    });
+    console.log(checkUser);
+    if (checkUser) {
+      // Grabs user info from firestore.
+      email = user.email;
+      id = user.uid;
+
+      // Grab DOM element info.
+      name = document.getElementById("name").value;
+      school = document.getElementById("school").value;
+
+      // Add the user info to the database.
+      db.collection('Users').doc(id).set({
+        'Name': name,
+        'School': school,
+        'email': email,
+        'UID': id, // Unique ID created when signup
+        'Score': START_SCORE, // Starts at zero wins
+      }).then(function () {
+        console.log('Doc successfully written!');
+      }).catch(function (error) {
+        console.error('Error writing document: ', error);
+      });
+    } else {
+      // No user is signed in.
+      console.log('not logged in');
+    }
+  }
+});
+
+
+//------------------------------------------------------
 // Login 
 //------------------------------------------------------ 
+// Function to handle login for user.
 function login() {
 
-  let theEmail = document.getElementById('username');
+  // Grabs the DOM elements.
+  let theEmail = document.getElementById('email');
   let pass = document.getElementById('password');
 
+  // Stores the typed in info into variables.
   let email = theEmail.value;
   let password = pass.value;
 
+  // Gives authorization to log in if the email and password are valid.
   auth.signInWithEmailAndPassword(email, password).then(function () {
-    let user = firebase.auth().currentUser;
+
+    // reference to firebase authentication.
+    // let user = firebase.auth().currentUser;
+
     if (user == null) {
       // User not signed in.
       console.log("not logged in");
     } else {
       // user is signed in, send to game page.
-      location.replace('leaderboard.html');
+      window.location.replace('homePage.html');
     }
   }).catch(function (error) {
     // Handle Errors here.
-    var errorCode = error.code;
-    window.alert('Not a valid log in.');
-    var errorMessage = error.message;
-    // ...
+    window.alert(error.message);
   });
 }
-
 
 //------------------------------------------------------
 // Logout
@@ -84,76 +152,69 @@ function logout() {
   }).catch(displayError);
 }
 
-//------------------------------------------------------
-// Send new User to database
-//------------------------------------------------------ 
+// //------------------------------------------------------
+// // Update password
+// //------------------------------------------------------ 
 
-let user = auth.currentUser;
-let email, curentGame;
+function reAuth() {
 
-firebase.auth().onAuthStateChanged(function (user) {
-  if (user) {
-    // User is signed in.
-    console.log('logged in');
+  // Set to false until password re-authenticated.
+  let knowPass = false;
 
-    // user information 
-    userEmail = user.email;
-    uid = user.uid;
+  // Reference to the firebase authentication.
+  let user = firebase.auth().currentUser;
 
-    // Add the user info to the database.
-    db.collection('Users').doc(uid).set({
-      // CurrGameId: currentGame,
-      email: userEmail,
-      UID: uid
-    }).then(function () {
-      console.log('Doc successfully written!');
+  // Grab the password they entered.
+  let credential = document.getElementById("passAgain").value;
+
+  // Prompt the user to re-provide their sign-in credentials
+  user.reauthenticateWithCredential(credential).then(function () {
+    // User re-authenticated.
+    console.log('user re=authenticated.');
+    knowPass = true;
+  }).catch(function (error) {
+    // An error happened.
+    console.log('error');
+  });
+
+  // If they put in the correct password, promt to type in new pasword.
+  if (knowPass) {
+    // Get the new password.
+    let newPassword = document.getElementById("newPassword").value;
+
+    // Update the pasword in firestore.
+    user.updatePassword(newPassword).then(function () {
+      // Update successful.
+      window.alert("Your password has been reset.");
     }).catch(function (error) {
-      console.error('Error writing document: ', error);
-    })
-
-  } else {
-    // No user is signed in.
-    console.log('not logged in');
+      // An error happened.
+      console.log('error');
+    });
   }
-});
+}
 
 //------------------------------------------------------
 // Send Password Reset email
 //------------------------------------------------------ 
 
-// // Get the users email address.
-// let emailAddress = "user@example.com";
+// Get the users email address.
+let emailAddress = document.getElementById("resetEmail").value;
 
-// // Send the password reset email.
-// auth.sendPasswordResetEmail(emailAddress).then(function () {
-//   // Email sent.
-// }).catch(function (error) {
-//   // An error happened.
-// });
-
-// //------------------------------------------------------
-// // Update password
-// //------------------------------------------------------ 
-
-// // Grab the currently logged in user.
-// let user = firebase.auth().currentUser;
-
-// // Get the new password.
-// let newPassword = getASecureRandomPassword();
-
-// // Update the pasword in firestore.
-// user.updatePassword(newPassword).then(function () {
-//   // Update successful.
-// }).catch(function (error) {
-//   // An error happened.
-// });
+// Send the password reset email.
+auth.sendPasswordResetEmail(emailAddress).then(function () {
+  // Email sent.
+  window.alert("An email has been sent!");
+}).catch(function (error) {
+  // An error happened.
+  console.log('error');
+});
 
 // //------------------------------------------------------
 // // Get User's profile information
 // //------------------------------------------------------ 
 
-// var user = auth.currentUser;
-// var name, email, photoUrl, uid, emailVerified;
+// // var user = firebase.auth().currentUser;
+// // var name, email, photoUrl, uid, emailVerified;
 
 // if (user != null) {
 //   name = user.displayName;
@@ -161,3 +222,13 @@ firebase.auth().onAuthStateChanged(function (user) {
 //   emailVerified = user.emailVerified;
 //   uid = user.uid;
 // }
+
+// idToken comes from the client app
+admin.auth().verifyIdToken(idToken)
+  .then(function(decodedToken) {
+    let uid = decodedToken.uid;
+    console.log(uid);
+    // ...
+  }).catch(function(error) {
+    // Handle error
+  });
