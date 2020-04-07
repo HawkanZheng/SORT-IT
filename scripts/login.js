@@ -96,7 +96,8 @@ firebase.auth().onAuthStateChanged(function (user) {
         'School': school,
         'email': email,
         'UID': id, // Unique ID created when signup
-        'Score': START_SCORE, // Starts at zero wins
+        'Scores.Hard': START_SCORE, // Starts at zero wins
+        'Scores.Easy': START_SCORE // Starts at zero wins
       }).then(function () {
         console.log('Doc successfully written!');
       }).catch(function (error) {
