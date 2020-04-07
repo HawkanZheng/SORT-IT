@@ -76,11 +76,11 @@ firebase.auth().onAuthStateChanged(function (user) {
     db.collection('Users').get().then((snapshot) => {
       snapshot.docs.forEach(doc => {
         if (doc.data().UID == user.uid) {
-          checkUser = false;
+          checkUser = false;    
+          console.log(checkUser);
         }
-      });
+      })
     });
-    console.log(checkUser);
     if (checkUser) {
       // Grabs user info from firestore.
       email = user.email;
@@ -105,7 +105,7 @@ firebase.auth().onAuthStateChanged(function (user) {
       });
     } else {
       // No user is signed in.
-      console.log('not logged in');
+      console.log('already has an account.');
     }
   }
 });
@@ -128,8 +128,8 @@ function login() {
   // Gives authorization to log in if the email and password are valid.
   auth.signInWithEmailAndPassword(email, password).then(function () {
 
-    // reference to firebase authentication.
-    // let user = firebase.auth().currentUser;
+    // reference user in firebase authentication.
+    let user = firebase.auth().currentUser;
 
     if (user == null) {
       // User not signed in.
@@ -195,41 +195,47 @@ function reAuth() {
 }
 
 //------------------------------------------------------
+// My Account Stuff
+//------------------------------------------------------ 
+
+
+
+//------------------------------------------------------
 // Send Password Reset email
 //------------------------------------------------------ 
 
-// Get the users email address.
-let emailAddress = document.getElementById("resetEmail").value;
+// // Get the users email address.
+// let emailAddress = document.getElementById("resetEmail").value;
 
-// Send the password reset email.
-auth.sendPasswordResetEmail(emailAddress).then(function () {
-  // Email sent.
-  window.alert("An email has been sent!");
-}).catch(function (error) {
-  // An error happened.
-  console.log('error');
-});
+// // Send the password reset email.
+// auth.sendPasswordResetEmail(emailAddress).then(function () {
+//   // Email sent.
+//   window.alert("An email has been sent!");
+// }).catch(function (error) {
+//   // An error happened.
+//   console.log('error');
+// });
 
-// //------------------------------------------------------
-// // Get User's profile information
-// //------------------------------------------------------ 
+// // //------------------------------------------------------
+// // // Get User's profile information
+// // //------------------------------------------------------ 
 
-// // var user = firebase.auth().currentUser;
-// // var name, email, photoUrl, uid, emailVerified;
+// // // var user = firebase.auth().currentUser;
+// // // var name, email, photoUrl, uid, emailVerified;
 
-// if (user != null) {
-//   name = user.displayName;
-//   email = user.email;
-//   emailVerified = user.emailVerified;
-//   uid = user.uid;
-// }
+// // if (user != null) {
+// //   name = user.displayName;
+// //   email = user.email;
+// //   emailVerified = user.emailVerified;
+// //   uid = user.uid;
+// // }
 
-// idToken comes from the client app
-admin.auth().verifyIdToken(idToken)
-  .then(function(decodedToken) {
-    let uid = decodedToken.uid;
-    console.log(uid);
-    // ...
-  }).catch(function(error) {
-    // Handle error
-  });
+// // idToken comes from the client app
+// admin.auth().verifyIdToken(idToken)
+//   .then(function(decodedToken) {
+//     let uid = decodedToken.uid;
+//     console.log(uid);
+//     // ...
+//   }).catch(function(error) {
+//     // Handle error
+//   });
