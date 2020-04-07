@@ -23,10 +23,6 @@
   color: gray;
 }
 
-.info {
-  text-align: center;
-}
-
 /* Caption text */
 .text {
   color: #f2f2f2;
@@ -35,6 +31,11 @@
   position: absolute;
   bottom: 8px;
   width: 100%;
+  text-align: center;
+}
+
+body {
+  position: relative;
   text-align: center;
 }
 
@@ -68,11 +69,6 @@
   }
 }
 
-body {
-  position: relative;
-}
-
-
 /* Info about the picture on hover. */
 .text {
   color: white;
@@ -86,10 +82,12 @@ body {
   text-align: center;
 }
 
+/* Each section of the page */
 .section {
   padding-top:60px;
   padding-bottom:60px;
 }
+
 /* Compost Section */
 .compost {
   background-color: green;
@@ -109,3 +107,5 @@ body {
 .trash {
   background-color: brown;
 }
+
+/* Info on each icon after hover */
