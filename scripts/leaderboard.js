@@ -42,7 +42,7 @@ function playGame() {
 // }
 
 //------------------------------------------------------------
-// Leaderboards
+// Leaderboards (EASY AND HARD)
 //------------------------------------------------------------
 
 // Max number of players to display on leaderboard.
