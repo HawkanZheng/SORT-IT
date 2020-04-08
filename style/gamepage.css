@@ -33,15 +33,15 @@ button{
     position: absolute;
     top: 50%;
     left: 50%;
-    height: 20vh;
-    width: 30vw;
+    height: 200px;
+    width: 200px;
     transform: translate(-50%, -50%);
 }
 
 #quit{
     width: 10vh;
     height: 3vh;
-    top: 65%;
+    top: 68%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 15px;
@@ -52,7 +52,7 @@ button{
     height:20vh;
     position: absolute;
     text-align: center;
-    top: 33%;
+    top: 28%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
