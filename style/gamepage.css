@@ -143,3 +143,24 @@ button {
 #myNav {
     height: 100%;
 }
+
+.end{
+    display: none;
+}
+
+#endScore{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#home{
+    width: 200px;
+    height: 100px;
+    font-size: 25px;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
