@@ -22,6 +22,7 @@ let auth = firebase.auth();
 //------------------------------------------------------ 
 function createUser() {
 
+  document.getElementById("myNav").style.height = "0%"
   // Grabs dom element references.
   let theEmail = document.getElementById('email');
   let pass = document.getElementById('password');
@@ -171,6 +172,59 @@ firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
     var errorCode = error.code;
     var errorMessage = error.message;
   });
+
+  // If they put in the correct password, promt to type in new pasword.
+  if (knowPass) {
+
+    let newPassword;
+    // Get the new password.
+    let newPasswordOne = document.getElementById("newPassw").value;
+    let newPasswordTwo = document.getElementById("confirm").value;
+
+    if (newPasswordOne == newPasswordTwo) {
+      newPassword = newPasswordOne;
+    }
+
+    // Update the pasword in firestore.
+    user.updatePassword(newPassword).then(function () {
+      // Update successful.
+      window.alert("Your password has been reset.");
+    }).catch(function (error) {
+      // An error happened.
+      console.log('error');
+    });
+  }
+}
+
+function openNav() {
+  document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.height = "0%";
+}
+
+//------------------------------------------------------
+// My Account Stuff
+//------------------------------------------------------ 
+
+
+
+//------------------------------------------------------
+// Send Password Reset email
+//------------------------------------------------------ 
+
+// // Get the users email address.
+// let emailAddress = document.getElementById("resetEmail").value;
+
+// // Send the password reset email.
+// auth.sendPasswordResetEmail(emailAddress).then(function () {
+//   // Email sent.
+//   window.alert("An email has been sent!");
+// }).catch(function (error) {
+//   // An error happened.
+//   console.log('error');
+// });
 
 // //------------------------------------------------------
 // // Get User's profile information
