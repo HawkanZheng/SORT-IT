@@ -20,6 +20,7 @@ let config = {
   let currentSchool = document.getElementById('currentSchool');
   let currentEmail = document.getElementById('currentEmail');
   let confirmation = document.getElementById('confirmation');
+  let welcome = document.getElementById('welcome');
 
 // Update the users School.
 function updateSchool() {
@@ -125,4 +126,32 @@ function getProfile() {
     })
 }
 
+// Custom Home page.
+function getName() {
+    // Checks for changes in the signed in user.
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+
+            // Get the user reference.
+            let id = user.uid;
+            let db = firebase.firestore();
+            let ref = db.collection('Users');
+
+            // Get user data.
+            ref.doc(id).get().then(function (doc) {
+
+                // Assign the users name and school to variables.
+                let name = doc.data().Name;
+
+                // Show the user their current profile info.
+                welcome.innerHTML = "Welcome " + name + "!";
+            });
+        } else {
+            // If no user is signed in.
+            console.log('no user logged in.');
+        }
+    })
+}
+
+getName();
 getProfile();

@@ -59,6 +59,11 @@ let ewasteButton = document.getElementById("ewaste");
 //Score display
 let scoreDisplay = document.getElementById("score");
 
+//Game music
+let music = document.getElementById("music");
+music.loop = true;
+music.volume = 0.5;
+
 //----------------------------IMAGE SRC ARRAYS-------------------------------//
 //Array for compost img src on easy difficulty, size 4
 let easyCompostArr = ["../images/compost/apple.png", "../images/compost/banana.png", "../images/compost/eggshell.png", "../images/compost/strawberry.png"];
@@ -294,80 +299,9 @@ function returnHome(){
     location.replace("homePage.html");
 }
 
-//------------------------------------------------------
-// Add Game Info the the Users personal info
-//------------------------------------------------------ 
-
-// function addGame() {
-
-//     firebase.auth().onAuthStateChanged(function (user) {
-//         if (user) {
-//             // Get the currently signed in users UID
-//             let id = user.uid;
-
-//             // Create reference for database.
-//             let db = firebase.firestore();
-
-//             // Create reference for Users collection.
-//             let ref = db.collection('Users');
-
-//             // Get user data.
-//             ref.doc(id).get().then(function (doc) {
-
-//                 let highScore = doc.data().Score; // Assign the users current wins
-
-//                 // Create a time stamp for the game.
-//                 let date = new Date();
-//                 let timestamp = date.getTime();
-
-//                 // Check if the game score is greater than the users current highscore.
-//                 if (score > highScore) {
-//                     highScore = score; // Increment wins
-//                 }
-
-//                 if (difficulty == 0) {
-//                     // Update users last time played and score in hard difficulty.
-//                     ref.doc(id).update({
-//                         'LastTimePlayed': timestamp,
-//                         'Scores.Hard': highScore,
-//                     }).then(function () {
-//                         // Send to landing page.
-//                         location.replace('homePage.html');
-
-//                         // log an error in the console.
-//                     }).catch(function (error) {
-//                         console.error('Error creating game: ', error);
-
-//                         // Send to landing page.
-//                         location.replace('homePage.html');
-//                     });
-//                 } else {
-//                     // Update users last time played and score in easy difficulty.
-//                     ref.doc(id).update({
-//                         'LastTimePlayed': timestamp,
-//                         'Scores.Easy': highScore
-//                     }).then(function () {
-//                         // Send to landing page.
-//                         location.replace('homePage.html');
-
-//                         // log an error in the console.
-//                     }).catch(function (error) {
-//                         console.error('Error creating game: ', error);
-
-//                         // Send to landing page.
-//                         location.replace('homePage.html');
-//                     });
-//                 }
-//             })
-//         } else {
-//             // If no user is signed in.
-//             console.log('no user');
-//         }
-//     })
-// }
 
 //------------------------------------------------------
-// Add Score to Leaderboard based on Difficulty
+// Add Score to Leaderboard and to User based on Difficulty
 //------------------------------------------------------ 
 
 // Add the users score to the Easy_Leaderboard collection.
@@ -488,6 +422,7 @@ function hardMode() {
     document.getElementById("myNav").style.height = "0%";
     startTimer = setInterval(startCountdown, SECONDS);
     difficulty = 1;
+    music.play();
 }
 
 // Takes user to 'easy' version of the game.
@@ -495,6 +430,7 @@ function easyMode() {
     document.getElementById("myNav").style.height = "0%";
     startTimer = setInterval(startCountdown, SECONDS);
     difficulty = 0;
+    music.play();
 }
 
 // Sends user to the leaderboard page.

@@ -3,10 +3,12 @@
     justify-content: flex-start;
     align-items: center;
     text-align: center;
+    font-family: Helvetica;
 }
 
 .center {
     text-align: center;
+    font-family: Helvetica;
 }
 
 .align {
@@ -22,17 +24,20 @@
     width: 100px;
     text-align: right;
     margin-right: 10px;
+    font-family: Helvetica;
 }
 
 .input {
     margin-bottom: 5px;
     margin-top: 2px;
+    font-family: Helvetica;
 }
 
 .inputPop {
     vertical-align: middle;
     border-radius: 8px;
     text-indent: 5px;
+    font-family: Helvetica;
 }
 
 .buttons {
@@ -42,6 +47,7 @@
     background-color: cyan;
     border-radius: 20px;
     cursor: pointer;
+    font-family: Helvetica;
 }
 
 input.div {
@@ -55,6 +61,7 @@ input.div {
 .studyGuide {
     position: absolute;
     top: 52%;
+    font-family: Helvetica;
 }
 
 .leaderboard {
