@@ -341,27 +341,28 @@ function addScore() {
                 let school = doc.data().School;
 
                 let boardRef; // declare variable for leaderboard reference.
+                let highScore; 
 
                 // Create a time stamp for the game.
                 let date = new Date();
                 let timestamp = date.getTime();
 
-                // Assign the users current wins
-                let highScore = doc.data().Score;
-
-                // Check if the game score is greater than the users current highscore.
-                if (score > highScore) {
-                    highScore = score; // Increment wins
-                }
-
                 // Create reference for Easy-Leaderboard collection
                 if (difficulty == 0) {
                     boardRef = db.collection('Easy_Leaderboard');
+                   
+                    // Assign the users current wins
+                    highScore = doc.data().ScoresEasy;
+
+                    // Check if the game score is greater than the users current highscore.
+                    if (score > highScore) {
+                        highScore = score; // Increment wins
+                    }
 
                     // Update users last time played and score in easy difficulty.
                     ref.doc(id).update({
                         'LastTimePlayed': timestamp,
-                        'Scores.Easy': highScore
+                        'ScoresEasy': highScore
                     }).then(function () {
 
                         // Update the users wins, loses, and last time played.
@@ -381,10 +382,18 @@ function addScore() {
                 } else {
                     boardRef = db.collection('Hard_Leaderboard');
 
+                    // Assign the users current wins
+                    highScore = doc.data().ScoresHard;
+
+                    // Check if the game score is greater than the users current highscore.
+                    if (score > highScore) {
+                        highScore = score; // Increment wins
+                    }
+
                     // Update users last time played and score in hard difficulty.
                     ref.doc(id).update({
                         'LastTimePlayed': timestamp,
-                        'Scores.Hard': highScore,
+                        'ScoresHard': highScore,
                     }).then(function () {
 
                         // Update the users wins, loses, and last time played.
