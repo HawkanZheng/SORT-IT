@@ -1,9 +1,17 @@
+body{
+    background-color: grey;
+}
+
 button {
     width: 35vw;
     height: 25vh;
     position: absolute;
-    font-weight: bolder;
-    font-size: 5vw;
+    border: none;
+    font-size: 4.5vw;
+}
+
+button:hover{
+    border:black 2px solid;
 }
 
 #compost {
@@ -144,18 +152,18 @@ button {
     height: 100%;
 }
 
-.end{
+.end {
     display: none;
 }
 
-#endScore{
+#endScore {
     position: absolute;
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-#home{
+#home {
     width: 200px;
     height: 100px;
     font-size: 25px;
@@ -163,4 +171,20 @@ button {
     top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+#compost {
+    background-color: green;
+}
+
+#ewaste {
+    background-color: lightslategrey;
+}
+
+#paper {
+    background-color: lightskyblue;
+}
+
+#trash{
+    background-color: brown;
 }
