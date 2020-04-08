@@ -43,7 +43,8 @@ let startClock = document.getElementById("startClock");
 let gameClock = document.getElementById("clock");
 //User's score
 let score = 0;
-
+//Previous highest score; set from server
+let previousHigh;
 //Question image
 let question = document.getElementById("question");
 //Current question category
@@ -128,11 +129,13 @@ function startCountdown() {
 //--------------------------ONCLICK FUNCTIONS-------------------------------//
 //Onclick function for the four answer buttons
 function answerSelect() {
-    //If selected correct category increment score
-    console.log(this.id);
+    //If selected correct category increment score, else decrement
     if (this.id == currCategory) {
         score++;
-
+        //Update score display
+        scoreDisplay.innerHTML = "Score" + "</br>" + score;
+    } else {
+        score--;
         //Update score display
         scoreDisplay.innerHTML = "Score" + "</br>" + score;
     }
@@ -160,7 +163,6 @@ function randomCategory() {
 //Get a random img for the question from the array of img src
 function getRandomQuestion(arr) {
     let index = Math.floor(Math.random() * arr.length);
-    console.log(arr[index]);
     return arr[index];
 }
 
@@ -242,6 +244,54 @@ function showGame() {
     for (let i = 0; i < gameUI.length; i++) {
         gameUI[i].style.display = "block";
     }
+}
+
+//When game over
+function gameOver() {
+    //Hide gameUI
+    let gameUI = document.getElementsByClassName("gameplay");
+    for (let i = 0; i < gameUI.length; i++) {
+        gameUI[i].style.display = "none";
+    }
+    addScore();
+}
+
+//-------------------------------END GAME FUNCTIONS-----------------------------//
+//Show end game stats
+function endStats(){
+    let endGameUI = document.getElementsByClassName("end");
+    for(let i = 0; i < endGameUI.length; i++){
+        endGameUI[i].style.display = "block";
+    }
+    let endDisplay = document.getElementById("endScore");
+    //Easy mode display
+    if(difficulty == 0){
+        if(previousHigh < score){
+            endDisplay.innerHTML = "Congratulations! New high score!" + "</br>" + 
+                                    "Easy Difficulty" + "</br>" + "Your score: " + score + 
+                                    "</br>" + "Your previous high score: " + previousHigh;
+        } else {
+            //Show score
+            endDisplay.innerHTML = "Easy Difficulty" + "</br>" + "Your score: " + score + 
+                                    "</br>" + "Your previous high score: " + previousHigh;
+        }
+    //Hard mode display
+    } else {
+        if(previousHigh < score){
+            endDisplay.innerHTML = "Congratulations! New high score!" + "</br>" + 
+                                    "Hard Difficulty" + "</br>" + "Your score: " + score + 
+                                    "</br>" + "Your previous high score: " + previousHigh;
+        } else {
+            //Show score
+            endDisplay.innerHTML = "Hard Difficulty" + "</br>" + "Your score: " + score + 
+                                    "</br>" + "Your previous high score: " + previousHigh;
+        }
+    }  
+}
+
+//Return to homescreen
+function returnHome(){
+    location.replace("homePage.html");
 }
 
 //------------------------------------------------------
@@ -354,6 +404,9 @@ function addScore() {
                     // Assign the users current wins
                     highScore = doc.data().ScoresEasy;
 
+                    //set previous high score to display on end game
+                    previousHigh = highScore;
+
                     // Check if the game score is greater than the users current highscore.
                     if (score > highScore) {
                         highScore = score; // Increment wins
@@ -371,6 +424,8 @@ function addScore() {
                             'School': school,
                             'Score': score // Set to game score.
                         }).then(function () {
+                            //Show end stats
+                            endStats();
                             // Log an error message
                         }).catch(function (error) {
                             console.error('Error adding game: ', error);
@@ -384,6 +439,9 @@ function addScore() {
 
                     // Assign the users current wins
                     highScore = doc.data().ScoresHard;
+
+                    //set previous high score to display on end game
+                    previousHigh = highScore;
 
                     // Check if the game score is greater than the users current highscore.
                     if (score > highScore) {
@@ -402,6 +460,8 @@ function addScore() {
                             'School': school,
                             'Score': score // Set to game score.
                         }).then(function () {
+                            //Show end stats
+                            endStats();
                             // Log an error message
                         }).catch(function (error) {
                             console.error('Error adding game: ', error);
@@ -435,8 +495,4 @@ function easyMode() {
     document.getElementById("myNav").style.height = "0%";
     startTimer = setInterval(startCountdown, SECONDS);
     difficulty = 0;
-}
-
-function gameOver() {
-    addScore();
 }
