@@ -16,15 +16,25 @@
 </head>
 
 <body>
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <label for="name">Name: </label>
+            <input type="text" placeholder="name" id="name" class="inputPop"></br>
+            <label for="school">School: </label>
+            <input type="text" placeholder="school" id="school" class="inputPop"></br>
+            <label for="email">Username: </label>
+            <input type="text" placeholder="username" id="email" class="inputPop"></br>
+            <label for="password">Password: </label>
+            <input type="password" placeholder="password" id="password" class="inputPop"></br>
+            <button class="buttons" id="signupPop" onclick="createUser()">Sign Up</button>
+        </div>
+    </div>
     <div class="center">
         <h2>WELCOME</h2>
         <img src="/images/index/Recycle.gif" alt="logo" width="300" height="300">
         <br>
         <div class="align">
-            <label for="name" class="label">Name: </label>
-            <input type="text" placeholder="name" id="name" class="input"></br>
-            <label for="school" class="label">School: </label>
-            <input type="text" placeholder="school" id="school" class="input"></br>
             <label for="email" class="label">Username: </label>
             <input type="text" placeholder="username" id="email" class="input"></br>
             <label for="password" class="label">Password: </label>
@@ -33,7 +43,7 @@
         <div>
             <br>
             <button class="buttons" id="login" onclick="login()">Login</button>
-            <button class="buttons" id="signup" onclick="createUser()">Sign Up</button>
+            <button class="buttons" id="signup" onclick="openNav()">Sign Up</button>
         </div>
 
         <script src="/scripts/login.js"></script>

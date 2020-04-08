@@ -22,6 +22,7 @@ let auth = firebase.auth();
 //------------------------------------------------------ 
 function createUser() {
 
+  document.getElementById("myNav").style.height = "0%"
   // Grabs dom element references.
   let theEmail = document.getElementById('email');
   let pass = document.getElementById('password');
@@ -200,6 +201,14 @@ function reAuth() {
       console.log('error');
     });
   }
+}
+
+function openNav() {
+  document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.height = "0%";
 }
 
 //------------------------------------------------------
