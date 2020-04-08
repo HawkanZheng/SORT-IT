@@ -501,7 +501,3 @@ function easyMode() {
 function getHome() {
     location.replace('homePage.html');
   }
-
-function gameOver() {
-    addScore();
-}
