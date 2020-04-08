@@ -1,7 +1,7 @@
 
 // Sends user to the my account page.
 function myAct() {
-    location.replace('myAccount.html');
+    location.replace('accountpage.html');
   }
 
 // Sends user to the game page.
