@@ -3,45 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="style/accountpage.css" />
+  <!----------------------------------------------->
+    <!-- CSS: Bootstrap, Firebase, other API -->
+    <!----------------------------------------------->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+  <link rel="stylesheet" type="text/css" href="/style/accountpage.css" />
   <title>My Account</title>
 </head>
 
 <body>
-  <h1>
-    My Account
-  </h1>
+  <h1 id="displayName"></h1>
   <table style="width:100%">
     <tr>
-      <td>Username: </td>
-      <td><input type="text"></td>
+      <td id="username"></td>
+      <td>
+        <input id="newUsername" type="text" placeholder="new Username">
+        <button id="updateName" onclick="updateUsername()">Update</button>
+      </td>
     </tr>
-    <tr><td><br></td></tr>
     <tr>
-      <td>Email: </td>
-      <td><input type="text"></td>
+      <td id="currentSchool"></td>
+      <td>
+        <input id="newSchool" type="text" placeholder="new School">
+        <button id="updateSchool" onclick="updateSchool()">Update</button>
+      </td>
     </tr>
-    <tr><td><br></td></tr>
     <tr>
-      <td>Current Password: </td>
-      <td><input type="text"></td>
-    </tr>
-    <tr><td><br></td></tr>
-    <tr>
-      <td>New Password: </td>
-      <td><input type="text"></td>
-    </tr>
-    <tr><td><br></td></tr>
-    <tr>
-      <td>School: </td>
-      <td><input type="text"></td>
+      <td id="currentEmail"></td>
+      <td id="confirmation"></td>
     </tr>
   </table>
-</br>
-<button id="save">Save</button>
-<button id="cancel">Cancel</button>
+  </br>
 
-
+  <!----------------------------------------------->
+  <!-- Javascript Files -->
+  <!----------------------------------------------->
+  <script src="/scripts/account.js"></script>
 </body>
 
 </html>

@@ -35,3 +35,12 @@ body {
     background-repeat: no-repeat;
     background-size: 100%;
 }
+
+.nav-link {
+    text-align: right;
+    font-size: medium;
+}
+
+.navbar{
+    font-size:500px;
+}

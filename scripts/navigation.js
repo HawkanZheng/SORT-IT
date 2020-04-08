@@ -1,7 +1,7 @@
 
 // Sends user to the my account page.
 function myAct() {
-    location.replace('myAccount.html');
+    location.replace('accountpage.html');
   }
 
 // Sends user to the game page.
@@ -14,7 +14,7 @@ function checkLeaders() {
     location.replace('leaderboard.html');
   }
 
-// Sends user to the leaderboard page.
+// Sends user to the Study Guide page.
 function studyGuide() {
     location.replace('studyGuide.html');
   }
