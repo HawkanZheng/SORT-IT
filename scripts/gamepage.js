@@ -59,6 +59,7 @@ function easyCountdown(){
     if(easyTime == 0){
         clearInterval(easyTimer);
         //Game over
+        gameOver();
         //Send score to server
     } else {
         easyTime--;
@@ -70,6 +71,7 @@ function hardCountdown(){
     if(hardTime == 0){
         clearInterval(hardTimer);
         //Game over
+        gameOver();
         //Send score to server
     } else {
         hardTime--;
@@ -106,7 +108,7 @@ function answerSelect(){
 
 //Onclick function to quit game and return to homepage
 function quitGame(){
-    location.replace("homepage.html");
+    location.replace("HTML Shell/homePage.html");
 }
 
 //Start game
@@ -216,3 +218,6 @@ function showGame(){
     startTimer = setInterval(startCountdown, SECONDS);
     difficulty = 0;
   }
+function gameOver(){
+    location.replace("HTML Shell/homePage.html");
+}
