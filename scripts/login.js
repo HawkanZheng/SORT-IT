@@ -42,7 +42,7 @@ function createUser() {
         console.log("not logged in");
       } else {
         // user is signed in, send to game page.
-        window.location.replace('/HTML Shell/homePage.html');
+        window.location.replace('/html/homePage.html');
       }
     }).catch(function (error) {
       window.alert(error.message);
@@ -136,7 +136,7 @@ function login() {
       console.log("not logged in");
     } else {
       // user is signed in, send to game page.
-      window.location.replace('/HTML Shell/homePage.html');
+      window.location.replace('/html/homePage.html');
     }
   }).catch(function (error) {
     // Handle Errors here.
