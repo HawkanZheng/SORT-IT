@@ -50,7 +50,7 @@ function getEasyLeaders() {
                 '<td>' + place + '<td>' +
                 players.Name + '<td>' +
                 players.Score + '<td>' +
-                players.School + '<td>'+
+                players.School + '<td>' +
                 '<tr>';
 
             // increment the users rank.
@@ -88,7 +88,7 @@ function getHardLeaders() {
                 '<td>' + place + '<td>' +
                 players.Name + '<td>' +
                 players.Score + '<td>' +
-                players.School + '<td>'+
+                players.School + '<td>' +
                 '<tr>';
 
             // increment the users rank.
@@ -161,6 +161,11 @@ function addGame(outcome) {
 // Sends user to the leaderboard page.
 function getHome() {
     location.replace('homePage.html');
-  }
+}
 // Call the function.
 getHardLeaders();
+
+// Hides pop up menu.
+function hidePop() {
+    document.getElementById("myNav").style.height = "0%";
+}

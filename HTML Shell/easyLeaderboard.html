@@ -18,7 +18,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 
-<body>
+<body id="body">
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="getHome()">&times;</a>
+        <div class="overlay-content">
+            <h3 class="diff">Please select leaderboard: </h3>
+            <a href="#" onclick="hidePop()" class="diff">Easy</a>
+            <a href="hardLeaderboard.html" onclick="hidePop()" class="diff">Hard</a>
+        </div>
+    </div>
+
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <a class="navbar-brand" href="homePage.html">Home</a>
         <ul class="navbar-nav">
@@ -31,8 +40,8 @@
     <div id="board">
     </br>
     </br>
-        <h3>Leaderboard</h3>
-    <h5>Difficulty: Easy</h5>
+        <h3 id="text">Leaderboard</h3>
+    <h5 id="text">Difficulty: Easy</h5>
     </div>
     <div class="table-holder">
         <table class="ranking" id="easy_leaderboards">

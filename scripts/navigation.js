@@ -11,7 +11,7 @@ function play() {
 
 // Sends user to the leaderboard page.
 function checkLeaders() {
-    location.replace('leaderboard.html');
+    location.replace('easyLeaderboard.html');
   }
 
 // Sends user to the Study Guide page.

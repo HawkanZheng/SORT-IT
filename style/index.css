@@ -6,6 +6,10 @@
     font-family: Helvetica;
 }
 
+#body {
+    background-color: #47C903;
+}
+
 .center {
     text-align: center;
     font-family: Helvetica;
@@ -46,6 +50,7 @@
     font-size: 2vh;
     background-color: cyan;
     border-radius: 20px;
+    border: none;
     cursor: pointer;
     font-family: Helvetica;
 }

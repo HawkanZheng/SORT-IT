@@ -21,7 +21,7 @@ td {
 }
 
 th {
-  background-color: #A9BA9D;
+  background-color: cyan;
   font-size: 2em;
 }
 
@@ -38,11 +38,12 @@ td {
 /* Home Button */
 .home-btn {
   border-radius: 3vw;
+  border: none;
   text-decoration: none;
   font-family: 'Roboto', sans-serif;
   font-size: 3em;
-  color: white;
-  background-color: #9dc183;
+  color: black;
+  background-color:cyan;
   text-align: center;
   transition: all 0.2s;
   width: 50vw;
@@ -56,7 +57,7 @@ td {
 }
 
 .home-btn:hover {
-  background-color: #A9BA9D;
+  background-color:white;
   cursor: pointer;
 }
 
@@ -67,10 +68,8 @@ td {
   }
 }
 
-body {
-  background-image: url("/images/leaderboard.jpg");
-  background-repeat: no-repeat;
-  background-size: 100%;
+#body {
+  background-color: #47C903;
 }
 
 /* Dropdown Button */
@@ -122,4 +121,64 @@ body {
 
 #text {
   font-size: 50px;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-y: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 36px;
+  color: #818181;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 40px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay {
+      overflow-y: auto;
+  }
+
+  .overlay a {
+      font-size: 20px
+  }
+
+  .overlay .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px;
+  }
 }
