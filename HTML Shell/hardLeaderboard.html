@@ -2,50 +2,57 @@
 <html>
 
 <head>
-  <title>Home Page</title>
+  <title>Leaderboard</title>
   <!----------------------------------------------->
   <!-- CSS: Bootstrap, Firebase, other API -->
   <!----------------------------------------------->
   <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
-  <link href="/style/home.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <link href="/style/board.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 
 <body>
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-    <a class="navbar-brand" href="#">Home</a>
+    <a class="navbar-brand" href="homePage.html">Home</a>
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href="myAccount.html">My Account</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">Log Out</a>
-      </li>
     </ul>
   </nav>
-
-  <div class="buttonHolder">
+  <!-- leaderboard title and table -->
+  <div id="board">
+    </br>
+    </br>
+    <h3>Leaderboard</h3>
+    <h5>Difficulty: Hard</h5>
+  </div>
+  <div class="table-holder">
+    <table class="ranking" id="hard_leaderboards">
+      <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Score</th>
+        <th>School</th>
+        <th></th>
+      </tr>
+    </table>
+  </div>
+  <div class="home-btn-holder">
     <div>
-      <h2 id="welcome"></h2>
-    </div>
-  </br>
-    <div>
-      <button class="button" onclick="play()">Start Game</button>
-    </div>
-    <div>
-      <button class="button" onclick="studyGuide()">Study Guide</button>
-    </div>
-    <div>
-      <button class="button" onclick="checkLeaders()">Leaderboard</button>
+      <button class="home-btn" onclick="getHome()">Home</button>
     </div>
   </div>
-  <script src="/scripts/navigation.js"></script>
-  <script src="/scripts/account.js"></script>
+
+  <script src="/scripts/leaderboard.js"></script>
+
 </body>
 
 </html>
