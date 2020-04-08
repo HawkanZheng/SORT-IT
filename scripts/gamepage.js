@@ -36,7 +36,7 @@ let hardTime = 45;
 let easyTimer;
 let hardTimer;
 //Start Timer
-let startTimer = setInterval(startCountdown, SECONDS);
+let startTimer;
 //Start clock timer
 let startClock = document.getElementById("startClock");
 //Game clock timer
@@ -384,6 +384,18 @@ function addHardGame() {
 
 addHardGame();
 
+  
+  function hardMode() {
+    document.getElementById("myNav").style.height = "0%";
+    startTimer = setInterval(startCountdown, SECONDS);
+    difficulty = 1;
+  }
+
+  function easyMode() {
+    document.getElementById("myNav").style.height = "0%";
+    startTimer = setInterval(startCountdown, SECONDS);
+    difficulty = 0;
+  }
 function gameOver(){
     location.replace("HTML Shell/homePage.html");
 }

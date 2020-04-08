@@ -1,16 +1,37 @@
-.login-content{
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	text-align: center;
+.login-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
 }
 
+.center {
+    text-align: center;
+}
+
+.align {
+    display: inline-block;
+    float: center;
+}
+
+.label {
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.input {
+    margin-bottom: 3px;
+}
 
 .buttons {
-    width: 15vw;
-    height: 4vh;
+    width: 100px;
+    height: 30px;
     font-size: 2vh;
-    background-color: lightcyan;
+    background-color: greenyellow;
     border-radius: 20px;
     cursor: pointer;
 }
@@ -41,8 +62,8 @@ input.div {
 .myAccount {
     margin-right: 2vh;
     float: right;
-    text-align:center;
-    padding:5px;
+    text-align: center;
+    padding: 5px;
     font-size: 4vh;
 }
 
@@ -51,4 +72,3 @@ input.div {
     height: 8vh;
     width: 7vw;
 }
-
