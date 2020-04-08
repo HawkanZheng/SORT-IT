@@ -42,7 +42,7 @@ let startClock = document.getElementById("startClock");
 //Game clock timer
 let gameClock = document.getElementById("clock");
 //User's score
-let score = 0;
+let score = 1;
 
 //Question image
 let question = document.getElementById("question");
@@ -77,6 +77,7 @@ function easyCountdown(){
         //Game over
         gameOver();
         //Send score to server
+        addEasyGame();
     } else {
         easyTime--;
     }
@@ -89,6 +90,7 @@ function hardCountdown(){
         //Game over
         gameOver();
         //Send score to server
+        addHardGame();
     } else {
         hardTime--;
     }
@@ -225,7 +227,7 @@ function showGame(){
 // Add Game
 //------------------------------------------------------ 
 
-function addGame(outcome) {
+function addGame() {
 
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
@@ -287,7 +289,7 @@ function addGame(outcome) {
 //------------------------------------------------------ 
 
 // Add the users score to the Easy_Leaderboard collection.
-function addEasyGame(easyScore) {
+function addEasyGame() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // Get the currently signed in users UID
@@ -300,13 +302,18 @@ function addEasyGame(easyScore) {
             let ref = db.collection('Easy_Leaderboard');
     
             // Get user data.
-            ref.doc(id).then(function (doc) {
+            ref.doc(id).get().then(function (doc) {
     
+                console.log(doc.data());
+                
+                let name = doc.data().Name;
+                let school = doc.data().School;
+
                 // Update the users wins, loses, and last time played.
                 ref.doc(id).set({
-                    'Name': timestamp,
-                    'School': gamesPlayed,
-                    'Score': easyScore // Set to game score.
+                    'Name': name,
+                    'School': school,
+                    'Score': score // Set to game score.
                 }).then(function () {
                     // Send to landing page.
                     location.replace('homePage.html');
@@ -331,7 +338,7 @@ function addEasyGame(easyScore) {
 //------------------------------------------------------ 
 
 // Add the users score to the Hard_Leaderboard collection.
-function addHardGame(hardScore) {
+function addHardGame() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // Get the currently signed in users UID
@@ -346,7 +353,7 @@ function addHardGame(hardScore) {
     
             ref.doc(id).get().then(function (doc) {
 
-                console.log(user);
+                console.log(doc.data());
                 
                 let name = doc.data().Name;
                 let school = doc.data().School;
@@ -355,7 +362,7 @@ function addHardGame(hardScore) {
                 ref.doc().set({
                     'Name': name,
                     'School': school,
-                    'Score': hardScore // Set to game score.
+                    'Score': score // Set to game score.
                 }).then(function () {
                     // Send to landing page.
                     location.replace('homePage.html');
@@ -375,7 +382,7 @@ function addHardGame(hardScore) {
     })
 }
 
-addHardGame(12);
+addHardGame();
 
 function gameOver(){
     location.replace("HTML Shell/homePage.html");
