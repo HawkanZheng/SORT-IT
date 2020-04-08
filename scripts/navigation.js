@@ -14,7 +14,7 @@ function checkLeaders() {
     location.replace('leaderboard.html');
   }
 
-// Sends user to the leaderboard page.
+// Sends user to the Study Guide page.
 function studyGuide() {
     location.replace('studyGuide.html');
   }

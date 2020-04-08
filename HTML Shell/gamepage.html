@@ -10,29 +10,41 @@
     <link rel="stylesheet" type="text/css" href="../style/gamepage.css"/>
     <title>Game</title>
 </head>
+<!-- Game Buttons -->
 <button id="compost" class="gameplay">Compost</button>
 <button id="paper" class="gameplay">Plastic & Paper</button>
 <button id="ewaste" class="gameplay">E-waste</button>
 <button id="trash" class="gameplay">Trash</button>
-<button id="quit" class="gameplay">Quit</button>
+<button id="quit" class="gameplay" onclick="quitGame()">Quit</button>
 <img alt="image" id="question" class="gameplay">
 
 <body>
+    <!-- Difficulty Pop-up -->
     <div id="myNav" class="overlay">
-        <a href="javascript:void(0)" class="closebtn">&times;</a>
+        <a href="javascript:void(0)" class="closebtn" onclick="getHome()">&times;</a>
         <div class="overlay-content">
             <h3>Please select difficulty: </h3>
             <a href="#" onclick="easyMode()">Easy</a>
             <a href="#" onclick="hardMode()">Hard</a>
         </div>
     </div>
-    <div id="score">
-        <h1 class="gameplay">Score<br />0</h1>
+    <!-- Score -->
+    <div>
+        <h1 class="gameplay"  id="score">Score<br />0</h1>
     </div>
     <div>
+        <!-- Timer -->
         <h1 id="clock" class="gameplay"></h1>
     </div>
+    <!-- Start Timer -->
     <div id="startClock"></div>
+
+    <!-- Game End Display -->
+    <div>
+        <h1 id="endScore" class="end"></h1>
+        </br>
+        <button id="home" class="end" onclick="returnHome()">Home</button>
+    </div>
     <!-- JS file link -->
     <script src="../scripts/gamepage.js"></script>
 </body>
