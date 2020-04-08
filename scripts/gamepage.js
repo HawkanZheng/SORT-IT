@@ -25,7 +25,7 @@ const EASYSELECT = 4;
 const HARDSELECT = 8;
 //------------------------------GLOBAL VARIABLES------------------------------//
 //Difficulty level for game, 0: easy, 1: hard
-let difficulty = 0;
+let difficulty = 1;
 //3 second start countdown timer
 let startTime = 3;
 //Time for easy 30 second timer
@@ -49,25 +49,36 @@ let question = document.getElementById("question");
 //Current question category
 let currCategory;
 
+//Buttons
+let trashButton = document.getElementById("trash");
+let compostButton = document.getElementById("compost");
+let plapapButton = document.getElementById("paper");
+let ewasteButton = document.getElementById("ewaste");
+
+//Score display
+let scoreDisplay = document.getElementById("score");
+
 //----------------------------IMAGE SRC ARRAYS-------------------------------//
 //Array for compost img src on easy difficulty, size 4
-let easyCompostArr = [];
+let easyCompostArr = ["../images/compost/apple.png", "../images/compost/banana.png", "../images/compost/eggshell.png", "../images/compost/strawberry.png"];
 //Array for plastic and paper img src on easy difficulty, size 4
-let easyPlaPapArr = [];
+let easyPlaPapArr = ["../images/p&p/cerealBox.png", "../images/p&p/waterbottle.png", "../images/p&p/magazine.png", "../images/p&p/newspaper.png"];
 //Array for e-waste img src on easy difficulty, size 4
-let easyEwasteArr = ["images/ewaste/cellphone.png", "images/ewaste/laptop.png", "images/ewaste/controller.png", "images/ewaste/headphone.png"];
+let easyEwasteArr = ["../images/e-waste/cellphone.png", "../images/e-waste/laptop.png", "../images/e-waste/controller.png", "../images/e-waste/headphone.png"];
 //Array for trash img src on easy difficulty, size 4
-let easyTrashArr = [];
+let easyTrashArr = ["../images/trash/chipbag.png", "../images/trash/straw.png", "../images/trash/candywrapper.png", "../images/trash/erasers.png"];
 //Array for compost img src on easy difficulty, size 8
-let hardCompostArr = [];
+let hardCompostArr = ["../images/compost/apple.png", "../images/compost/banana.png", "../images/compost/eggshell.png", "../images/compost/strawberry.png", 
+                    "../images/compost/bones.png", "../images/compost/leaves.png", "../images/compost/fishbone.png", "../images/compost/watermelon.png"];
 //Array for plastic and paper img src on easy difficulty, size 8
-let hardPlaPapArr = [];
+let hardPlaPapArr = ["../images/p&p/cerealBox.png", "../images/p&p/waterbottle.png", "../images/p&p/magazine.png", "../images/p&p/newspaper.png", 
+                    "../images/p&p/box.png", "../images/p&p/milk.png", "../images/p&p/milkjug.png", "../images/p&p/envelope.png"];
 //Array for e-waste img src on easy difficulty, size 8
-let hardEwasteArr = ["images/ewaste/cellphone.png", "images/ewaste/laptop.png", "images/ewaste/controller.png", "images/ewaste/headphone.png",
-    "images/ewaste/tv.png", "images/ewaste/microwave.png", "images/ewaste/keyboard.png", "images/ewaste/battery.png"
-];
+let hardEwasteArr = ["../images/e-waste/cellphone.png", "../images/e-waste/laptop.png", "../images/e-waste/controller.png", "../images/e-waste/headphone.png",
+                    "../images/e-waste/tv.png", "../images/e-waste/microwave.png", "../images/e-waste/keyboard.png", "../images/e-waste/battery.png"];
 //Array for trash img src on easy difficulty, size 8
-let hardTrashArr = [];
+let hardTrashArr = ["../images/trash/chipbag.png", "../images/trash/straw.png", "../images/trash/candywrapper.png", "../images/trash/erasers.png",
+                    "../images/trash/gluestick.png", "../images/trash/medicalmask.png", "../images/trash/toiletpaper.webp", "../images/trash/pencil.png"];
 
 //------------------------------TIMER FUNCTIONS--------------------------------------//
 //Countdown function for easy timer
@@ -118,43 +129,38 @@ function startCountdown() {
 //Onclick function for the four answer buttons
 function answerSelect() {
     //If selected correct category increment score
-    if (this.id == currCategory) {
+    console.log(this.id);
+    if(this.id == currCategory){
         score++;
+
+        //Update score display
+        scoreDisplay.innerHTML = "Score" + "</br>" + score;
     }
     //Change question
     setRandomQuestion();
 }
 
 //Onclick function to quit game and return to homepage
-function quitGame() {
-    location.replace("HTML Shell/homePage.html");
+function quitGame(){
+    location.replace("homePage.html");
 }
 
-//Start game
-function startGame() {
-    //Dipslay game UI
-    showGame();
-    //Start easy timer
-    if (difficulty == 0) {
-        easyTimer = setInterval(easyCountdown, SECONDS);
-        //Start hard timer        
-    } else {
-        hardTimer = setInterval(hardCountdown, SECONDS);
-    }
-
-    setRandomQuestion();
-}
+trashButton.onclick = answerSelect;
+compostButton.onclick = answerSelect;
+plapapButton.onclick = answerSelect;
+ewasteButton.onclick = answerSelect;
 
 //-------------------------------GAMEPLAY FUNCTIONS---------------------------------//
 //Generate random number between 1 and 4 to determine the category of question
 //1. Compost, 2. Plastic & Paper, 3. E-waste, 4. Trash
-function randomCategory() {
-    return Math.ceil(Math.random(CATEGORIES));
+function randomCategory(){
+    return Math.ceil(Math.random() * CATEGORIES);
 }
 
 //Get a random img for the question from the array of img src
-function getRandomQuestion(arr) {
-    let index = Math.floor(Math.random(arr.length));
+function getRandomQuestion(arr){
+    let index = Math.floor(Math.random() * arr.length);
+    console.log(arr[index]);
     return arr[index];
 }
 
@@ -211,6 +217,20 @@ function setRandomQuestion() {
             }
             break;
     }
+}
+
+//Start game
+function startGame(){
+    //Dipslay game UI
+    showGame();
+    //Start easy timer
+    if(difficulty == 0){
+        easyTimer = setInterval(easyCountdown, SECONDS);
+    //Start hard timer        
+    } else {
+        hardTimer = setInterval(hardCountdown, SECONDS);
+    }
+    setRandomQuestion();
 }
 
 //Hide start clock and show game UI
@@ -403,9 +423,7 @@ function easyMode() {
     document.getElementById("myNav").style.height = "0%";
     startTimer = setInterval(startCountdown, SECONDS);
     difficulty = 0;
-}
-
-// Sends the user to the homepage.
-function gameOver() {
-    location.replace("HTML Shell/homePage.html");
+  }
+function gameOver(){
+    location.replace("homePage.html");
 }
