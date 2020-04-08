@@ -48,13 +48,13 @@ function playGame() {
 // Max number of players to display on leaderboard.
 const TOP_PLAYERS = 10;
 
-// Get leaderboard element.
-let boards = document.getElementById('leaderboards');
-
 //------------------ Default Shows Easy Leaderboard ------------------------//
 
 // Add leaderboard information to the page.
-function leaderboard() {
+function getEasyLeaders() {
+
+    // Get leaderboard element.
+    let boards = document.getElementById('easy_leaderboards');
 
     // Create a leaderboards reference.
     let leaders = db.collection('Easy_Leaderboard');
@@ -84,12 +84,15 @@ function leaderboard() {
 }
 
 // Call the function.
-leaderboard();
+getEasyLeaders();
 
 //------------------ Choose to show Hard Leaderboard ------------------------//
 
 // Add leaderboard information to the page.
-function hardLeaders() {
+function getHardLeaders() {
+
+    // Get leaderboard element.
+    let boards = document.getElementById('hard_leaderboards');
 
     // Create a hard leaderboard reference
     let leaders = db.collection('Hard_Leaderboard');
@@ -117,6 +120,8 @@ function hardLeaders() {
         })
     })
 }
+
+getHardLeaders();
 
 //------------------------------------------------------
 // Add Game
