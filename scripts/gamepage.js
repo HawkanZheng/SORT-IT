@@ -1,3 +1,19 @@
+//--------------------------------------------------------------
+// Your web app's Firebase configuration
+//--------------------------------------------------------------
+let config = {
+    apiKey: "AIzaSyCI3tPf61sTY3nLoHJG7P8TGBakZU69o3w",
+    authDomain: "comp-1800-94b18.firebaseapp.com",
+    databaseURL: "https://comp-1800-94b18.firebaseio.com",
+    projectId: "comp-1800-94b18",
+    storageBucket: "comp-1800-94b18.appspot.com",
+    messagingSenderId: "254451731238",
+    appId: "1:254451731238:web:ff1e74fe12719d02740fe7"
+};
+// Initialize Firebase
+firebase.initializeApp(config);
+
+
 //---------------------------------CONSTANTS-----------------------------------//
 //1 second in milliseconds
 const SECONDS = 1000;
@@ -76,7 +92,6 @@ function easyCountdown() {
         clearInterval(easyTimer);
         //Game over
         gameOver();
-        //Send score to server
     } else {
         easyTime--;
     }
@@ -88,7 +103,6 @@ function hardCountdown() {
         clearInterval(hardTimer);
         //Game over
         gameOver();
-        //Send score to server
     } else {
         hardTime--;
     }
@@ -230,12 +244,193 @@ function showGame() {
     }
 }
 
+//------------------------------------------------------
+// Add Game Info the the Users personal info
+//------------------------------------------------------ 
+
+// function addGame() {
+
+//     firebase.auth().onAuthStateChanged(function (user) {
+//         if (user) {
+//             // Get the currently signed in users UID
+//             let id = user.uid;
+
+//             // Create reference for database.
+//             let db = firebase.firestore();
+
+//             // Create reference for Users collection.
+//             let ref = db.collection('Users');
+
+//             // Get user data.
+//             ref.doc(id).get().then(function (doc) {
+
+//                 let highScore = doc.data().Score; // Assign the users current wins
+
+//                 // Create a time stamp for the game.
+//                 let date = new Date();
+//                 let timestamp = date.getTime();
+
+//                 // Check if the game score is greater than the users current highscore.
+//                 if (score > highScore) {
+//                     highScore = score; // Increment wins
+//                 }
+
+//                 if (difficulty == 0) {
+//                     // Update users last time played and score in hard difficulty.
+//                     ref.doc(id).update({
+//                         'LastTimePlayed': timestamp,
+//                         'Scores.Hard': highScore,
+//                     }).then(function () {
+//                         // Send to landing page.
+//                         location.replace('homePage.html');
+
+//                         // log an error in the console.
+//                     }).catch(function (error) {
+//                         console.error('Error creating game: ', error);
+
+//                         // Send to landing page.
+//                         location.replace('homePage.html');
+//                     });
+//                 } else {
+//                     // Update users last time played and score in easy difficulty.
+//                     ref.doc(id).update({
+//                         'LastTimePlayed': timestamp,
+//                         'Scores.Easy': highScore
+//                     }).then(function () {
+//                         // Send to landing page.
+//                         location.replace('homePage.html');
+
+//                         // log an error in the console.
+//                     }).catch(function (error) {
+//                         console.error('Error creating game: ', error);
+
+//                         // Send to landing page.
+//                         location.replace('homePage.html');
+//                     });
+//                 }
+//             })
+//         } else {
+//             // If no user is signed in.
+//             console.log('no user');
+//         }
+//     })
+// }
+
+//------------------------------------------------------
+// Add Score to Leaderboard based on Difficulty
+//------------------------------------------------------ 
+
+// Add the users score to the Easy_Leaderboard collection.
+function addScore() {
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // Get the currently signed in users UID
+            let id = user.uid;
+
+            // Create reference for database.
+            let db = firebase.firestore();
+
+            // Create reference for Users collection.
+            let ref = db.collection('Users');
+
+            // Get user data.
+            ref.doc(id).get().then(function (doc) {
+
+                // Assign the users name and school to variables.
+                let name = doc.data().Name;
+                let school = doc.data().School;
+
+                let boardRef; // declare variable for leaderboard reference.
+                let highScore; 
+
+                // Create a time stamp for the game.
+                let date = new Date();
+                let timestamp = date.getTime();
+
+                // Create reference for Easy-Leaderboard collection
+                if (difficulty == 0) {
+                    boardRef = db.collection('Easy_Leaderboard');
+                   
+                    // Assign the users current wins
+                    highScore = doc.data().ScoresEasy;
+
+                    // Check if the game score is greater than the users current highscore.
+                    if (score > highScore) {
+                        highScore = score; // Increment wins
+                    }
+
+                    // Update users last time played and score in easy difficulty.
+                    ref.doc(id).update({
+                        'LastTimePlayed': timestamp,
+                        'ScoresEasy': highScore
+                    }).then(function () {
+
+                        // Update the users wins, loses, and last time played.
+                        boardRef.doc().set({
+                            'Name': name,
+                            'School': school,
+                            'Score': score // Set to game score.
+                        }).then(function () {
+                            // Log an error message
+                        }).catch(function (error) {
+                            console.error('Error adding game: ', error);
+                        });
+                        // log an error in the console.
+                    }).catch(function (error) {
+                        console.error('Error creating game: ', error);
+                    });
+                } else {
+                    boardRef = db.collection('Hard_Leaderboard');
+
+                    // Assign the users current wins
+                    highScore = doc.data().ScoresHard;
+
+                    // Check if the game score is greater than the users current highscore.
+                    if (score > highScore) {
+                        highScore = score; // Increment wins
+                    }
+
+                    // Update users last time played and score in hard difficulty.
+                    ref.doc(id).update({
+                        'LastTimePlayed': timestamp,
+                        'ScoresHard': highScore,
+                    }).then(function () {
+
+                        // Update the users wins, loses, and last time played.
+                        boardRef.doc().set({
+                            'Name': name,
+                            'School': school,
+                            'Score': score // Set to game score.
+                        }).then(function () {
+                            // Log an error message
+                        }).catch(function (error) {
+                            console.error('Error adding game: ', error);
+                        });
+                        // log an error in the console.
+                    }).catch(function (error) {
+                        console.error('Error creating game: ', error);
+                    });
+                }
+            })
+        } else {
+            // If no user is signed in.
+            console.log('no user');
+        }
+    })
+}
+
+//------------------------------------------------------
+// Selects the Game difficulty
+//------------------------------------------------------ 
+
+// Takes user to 'hard' version of the game.
 function hardMode() {
     document.getElementById("myNav").style.height = "0%";
     startTimer = setInterval(startCountdown, SECONDS);
     difficulty = 1;
 }
 
+// Takes user to 'easy' version of the game.
 function easyMode() {
     document.getElementById("myNav").style.height = "0%";
     startTimer = setInterval(startCountdown, SECONDS);
@@ -243,5 +438,5 @@ function easyMode() {
 }
 
 function gameOver() {
-    location.replace("homePage.html");
+    addScore();
 }
