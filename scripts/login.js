@@ -42,7 +42,7 @@ function createUser() {
         console.log("not logged in");
       } else {
         // user is signed in, send to game page.
-        window.location.replace('homePage.html');
+        window.location.replace('/HTML Shell/homePage.html');
       }
     }).catch(function (error) {
       window.alert(error.message);
@@ -136,7 +136,7 @@ function login() {
       console.log("not logged in");
     } else {
       // user is signed in, send to game page.
-      window.location.replace('homePage.html');
+      window.location.replace('/HTML Shell/homePage.html');
     }
   }).catch(function (error) {
     // Handle Errors here.
@@ -202,38 +202,3 @@ function closeNav() {
   document.getElementById("myNav").style.height = "0%";
 }
 
-//------------------------------------------------------
-// My Account Stuff
-//------------------------------------------------------ 
-
-
-
-//------------------------------------------------------
-// Send Password Reset email
-//------------------------------------------------------ 
-
-// // Get the users email address.
-// let emailAddress = document.getElementById("resetEmail").value;
-
-// // Send the password reset email.
-// auth.sendPasswordResetEmail(emailAddress).then(function () {
-//   // Email sent.
-//   window.alert("An email has been sent!");
-// }).catch(function (error) {
-//   // An error happened.
-//   console.log('error');
-// });
-
-// //------------------------------------------------------
-// // Get User's profile information
-// //------------------------------------------------------ 
-
-// // var user = firebase.auth().currentUser;
-// // var name, email, photoUrl, uid, emailVerified;
-
-// if (user != null) {
-//   name = user.displayName;
-//   email = user.email;
-//   emailVerified = user.emailVerified;
-//   uid = user.uid;
-// }
