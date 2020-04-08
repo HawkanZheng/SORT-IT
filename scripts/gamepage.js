@@ -59,6 +59,11 @@ let ewasteButton = document.getElementById("ewaste");
 //Score display
 let scoreDisplay = document.getElementById("score");
 
+//Game music
+let music = document.getElementById("music");
+music.loop = true;
+music.volume = 0.5;
+
 //----------------------------IMAGE SRC ARRAYS-------------------------------//
 //Array for compost img src on easy difficulty, size 4
 let easyCompostArr = ["../images/compost/apple.png", "../images/compost/banana.png", "../images/compost/eggshell.png", "../images/compost/strawberry.png"];
@@ -488,6 +493,7 @@ function hardMode() {
     document.getElementById("myNav").style.height = "0%";
     startTimer = setInterval(startCountdown, SECONDS);
     difficulty = 1;
+    music.play();
 }
 
 // Takes user to 'easy' version of the game.
@@ -495,6 +501,7 @@ function easyMode() {
     document.getElementById("myNav").style.height = "0%";
     startTimer = setInterval(startCountdown, SECONDS);
     difficulty = 0;
+    music.play();
 }
 
 // Sends user to the leaderboard page.
