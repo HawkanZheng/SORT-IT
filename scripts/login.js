@@ -22,6 +22,7 @@ let auth = firebase.auth();
 //------------------------------------------------------ 
 function createUser() {
 
+  document.getElementById("myNav").style.height = "0%"
   // Grabs dom element references.
   let theEmail = document.getElementById('email');
   let pass = document.getElementById('password');
@@ -157,26 +158,19 @@ function logout() {
 // Update password
 //------------------------------------------------------ 
 
-function reAuth() {
-
-  // Set to false until password re-authenticated.
-  let knowPass = false;
-
-  // Reference to the firebase authentication.
-  let user = firebase.auth().currentUser;
-
-  // Grab the password they entered.
-  let credential = document.getElementById("oldPass").value;
-
-  // Prompt the user to re-provide their sign-in credentials
-
-  user.reauthenticateWithCredential(credential).then(function () {
-    // User re-authenticated.
-    console.log('user re=authenticated.');
-    knowPass = true;
-  }).catch(function (error) {
-    // An error happened.
-    console.log('error');
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+  .then(function() {
+    // Existing and future Auth states are now persisted in the current
+    // session only. Closing the window would clear any existing state even
+    // if a user forgets to sign out.
+    // ...
+    // New sign-in will be persisted with session persistence.
+    return firebase.auth().signInWithEmailAndPassword(email, password);
+  })
+  .catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
   });
 
   // If they put in the correct password, promt to type in new pasword.
@@ -200,6 +194,14 @@ function reAuth() {
       console.log('error');
     });
   }
+}
+
+function openNav() {
+  document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.height = "0%";
 }
 
 //------------------------------------------------------
