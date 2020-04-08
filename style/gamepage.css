@@ -8,6 +8,7 @@ button {
     position: absolute;
     border: none;
     font-size: 4.5vw;
+    font-family: Helvetica;
 }
 
 button:hover{
@@ -82,10 +83,12 @@ button:hover{
     transform: translate(-50%, -50%);
     font-size: 100px;
     font-weight: bolder;
+    font-family: Helvetica;
 }
 
 .gameplay {
     display: none;
+    font-family: Helvetica;
 }
 
 .overlay {
@@ -154,13 +157,14 @@ button:hover{
 
 .end {
     display: none;
+    font-family: Helvetica;
 }
 
 #endScore {
     position: absolute;
     top: 30%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); 
 }
 
 #home {
@@ -187,4 +191,8 @@ button:hover{
 
 #trash{
     background-color: brown;
+}
+
+.diff{
+    font-family: Helvetica;
 }

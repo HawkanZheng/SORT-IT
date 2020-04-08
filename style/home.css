@@ -4,8 +4,8 @@
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
     font-size: 1.5em;
-    color: white;
-    background-color: #6fa14b;
+    color: black;
+    background-color: cyan;
     text-align: center;
     transition: all 0.2s;
     width: 30vw;
@@ -15,11 +15,10 @@
 
 .buttonHolder {
     text-align: center;
-    margin-top: 25%;
 }
 
 .button:hover {
-    background-color: #9dc183;
+    background-color:white;
     cursor: pointer;
 }
 
@@ -30,10 +29,8 @@
     }
 }
 
-body {
-    background-image: url('/images/homeback.gif');
-    background-repeat: no-repeat;
-    background-size: 100%;
+#body {
+    background-color: #47C903;
 }
 
 .nav-link {
@@ -41,6 +38,10 @@ body {
     font-size: medium;
 }
 
-.navbar{
-    font-size:500px;
+.navbar {
+    font-size: 500px;
+}
+
+#logo {
+    text-align: center;
 }
