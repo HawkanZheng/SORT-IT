@@ -178,3 +178,8 @@ function addGame(outcome) {
         }
     })
 }
+
+// Sends user to the leaderboard page.
+function getHome() {
+    location.replace('homePage.html');
+  }
