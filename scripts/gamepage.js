@@ -437,6 +437,11 @@ function easyMode() {
     difficulty = 0;
 }
 
+// Sends user to the leaderboard page.
+function getHome() {
+    location.replace('homePage.html');
+  }
+
 function gameOver() {
     addScore();
 }
