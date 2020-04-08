@@ -17,30 +17,6 @@ firebase.initializeApp(config);
 let db = firebase.firestore();
 let auth = firebase.auth();
 
-// Go to the game page.
-function playGame() {
-    location.replace('game.html'); // Sent to game page.
-}
-
-//------------------------------------------------------------
-// Welcome message 
-//------------------------------------------------------------
-
-// // Create a users reference.
-// let ref = db.collection('Users');
-
-// function welcome() {
-//     let user = auth.currentUser;
-
-//     ref.get().then(function(doc) {
-//         console.log(doc.data());
-//     })
-
-//     let message = document.getElementById('welcome');
-
-//     message.innerHTML = 'Welcome to BlahBlahBlah ' + user.email;
-// }
-
 //------------------------------------------------------------
 // Leaderboards (EASY AND HARD)
 //------------------------------------------------------------
@@ -48,13 +24,13 @@ function playGame() {
 // Max number of players to display on leaderboard.
 const TOP_PLAYERS = 10;
 
-// Get leaderboard element.
-let boards = document.getElementById('leaderboards');
-
-//------------------ Default Shows Easy Leaderboard ------------------------//
+//------------------ Choose to show Easy Leaderboard ------------------------//
 
 // Add leaderboard information to the page.
-function leaderboard() {
+function getEasyLeaders() {
+
+    // Get leaderboard element.
+    let boards = document.getElementById('easy_leaderboards');
 
     // Create a leaderboards reference.
     let leaders = db.collection('Easy_Leaderboard');
@@ -84,12 +60,15 @@ function leaderboard() {
 }
 
 // Call the function.
-leaderboard();
+getEasyLeaders();
 
 //------------------ Choose to show Hard Leaderboard ------------------------//
 
 // Add leaderboard information to the page.
-function hardLeaders() {
+function getHardLeaders() {
+
+    // Get leaderboard element.
+    let boards = document.getElementById('hard_leaderboards');
 
     // Create a hard leaderboard reference
     let leaders = db.collection('Hard_Leaderboard');
@@ -183,3 +162,5 @@ function addGame(outcome) {
 function getHome() {
     location.replace('homePage.html');
   }
+// Call the function.
+getHardLeaders();

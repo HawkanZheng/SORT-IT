@@ -32,7 +32,7 @@ table {
   #board {
       text-align: center;
       font-family: 'Roboto', sans-serif;
-      font-size: 3em;
+      font-size: 2em;
   }
 
   /* Home Button */
@@ -68,15 +68,15 @@ table {
 }
 
 body {
-    background-image: url("/images/leader_back.jpg");
+    background-image: url("/images/leaderboard.jpg");
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: 100%;
 }
 
 /* Dropdown Button */
 .dropbtn {
     background-color: #A9BA9D;
-    font-size: .7em;
+    font-size: .8em;
     font-family: 'Roboto', sans-serif;
     border: none;
   }
@@ -112,4 +112,6 @@ body {
   .dropdown:hover .dropdown-content {display: block;}
   
   /* Change the background color of the dropdown button when the dropdown content is shown */
-  .dropdown:hover .dropbtn {background-color: #A9BA9D;}
+  .dropdown:hover .dropbtn {
+    background-color: #9dc183;
+  }
