@@ -3,22 +3,29 @@
 
 <head>
   <title>Home Page</title>
+  <!----------------------------------------------->
+  <!-- CSS: Bootstrap, Firebase, other API -->
+  <!----------------------------------------------->
+  <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
   <link href="/style/home.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-          <div class="buttonHolder">
-            <div>
-              <button class="button" onclick="play()">Start Game</button>
-            </div>
-            <div>
-              <button class="button" onclick="studyGuide()">Study Guide</button>
-            </div>
-            <div>
-              <button class="button" onclick="checkLeaders()">Leaderboard</button>
-            </div>
-          </div>
-          <script src="/scripts/login.js"></script>
-          <script src="/scripts/navigation.js"></script>
-    </body>
+  <div class="buttonHolder">
+    <div>
+      <button class="button" onclick="play()">Start Game</button>
+    </div>
+    <div>
+      <button class="button" onclick="studyGuide()">Study Guide</button>
+    </div>
+    <div>
+      <button class="button" onclick="logout()">Leaderboard</button>
+    </div>
+  </div>
+  <script src="/scripts/login.js"></script>
+  <script src="/scripts/navigation.js"></script>
+</body>
+
 </html>
