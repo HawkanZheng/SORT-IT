@@ -68,17 +68,21 @@ let easyEwasteArr = ["../images/e-waste/cellphone.png", "../images/e-waste/lapto
 //Array for trash img src on easy difficulty, size 4
 let easyTrashArr = ["../images/trash/chipbag.png", "../images/trash/straw.png", "../images/trash/candywrapper.png", "../images/trash/erasers.png"];
 //Array for compost img src on easy difficulty, size 8
-let hardCompostArr = ["../images/compost/apple.png", "../images/compost/banana.png", "../images/compost/eggshell.png", "../images/compost/strawberry.png", 
-                    "../images/compost/bones.png", "../images/compost/leaves.png", "../images/compost/fishbone.png", "../images/compost/watermelon.png"];
+let hardCompostArr = ["../images/compost/apple.png", "../images/compost/banana.png", "../images/compost/eggshell.png", "../images/compost/strawberry.png",
+    "../images/compost/bones.png", "../images/compost/leaves.png", "../images/compost/fishbone.png", "../images/compost/watermelon.png"
+];
 //Array for plastic and paper img src on easy difficulty, size 8
-let hardPlaPapArr = ["../images/p&p/cerealBox.png", "../images/p&p/waterbottle.png", "../images/p&p/magazine.png", "../images/p&p/newspaper.png", 
-                    "../images/p&p/box.png", "../images/p&p/milk.png", "../images/p&p/milkjug.png", "../images/p&p/envelope.png"];
+let hardPlaPapArr = ["../images/p&p/cerealBox.png", "../images/p&p/waterbottle.png", "../images/p&p/magazine.png", "../images/p&p/newspaper.png",
+    "../images/p&p/box.png", "../images/p&p/milk.png", "../images/p&p/milkjug.png", "../images/p&p/envelope.png"
+];
 //Array for e-waste img src on easy difficulty, size 8
 let hardEwasteArr = ["../images/e-waste/cellphone.png", "../images/e-waste/laptop.png", "../images/e-waste/controller.png", "../images/e-waste/headphone.png",
-                    "../images/e-waste/tv.png", "../images/e-waste/microwave.png", "../images/e-waste/keyboard.png", "../images/e-waste/battery.png"];
+    "../images/e-waste/tv.png", "../images/e-waste/microwave.png", "../images/e-waste/keyboard.png", "../images/e-waste/battery.png"
+];
 //Array for trash img src on easy difficulty, size 8
 let hardTrashArr = ["../images/trash/chipbag.png", "../images/trash/straw.png", "../images/trash/candywrapper.png", "../images/trash/erasers.png",
-                    "../images/trash/gluestick.png", "../images/trash/medicalmask.png", "../images/trash/toiletpaper.webp", "../images/trash/pencil.png"];
+    "../images/trash/gluestick.png", "../images/trash/medicalmask.png", "../images/trash/toiletpaper.webp", "../images/trash/pencil.png"
+];
 
 //------------------------------TIMER FUNCTIONS--------------------------------------//
 //Countdown function for easy timer
@@ -88,8 +92,6 @@ function easyCountdown() {
         clearInterval(easyTimer);
         //Game over
         gameOver();
-        //Send score to server
-        // addEasyGame();
     } else {
         easyTime--;
     }
@@ -101,8 +103,6 @@ function hardCountdown() {
         clearInterval(hardTimer);
         //Game over
         gameOver();
-        //Send score to server
-        // addHardGame();
     } else {
         hardTime--;
     }
@@ -130,7 +130,7 @@ function startCountdown() {
 function answerSelect() {
     //If selected correct category increment score
     console.log(this.id);
-    if(this.id == currCategory){
+    if (this.id == currCategory) {
         score++;
 
         //Update score display
@@ -141,7 +141,7 @@ function answerSelect() {
 }
 
 //Onclick function to quit game and return to homepage
-function quitGame(){
+function quitGame() {
     location.replace("homePage.html");
 }
 
@@ -153,12 +153,12 @@ ewasteButton.onclick = answerSelect;
 //-------------------------------GAMEPLAY FUNCTIONS---------------------------------//
 //Generate random number between 1 and 4 to determine the category of question
 //1. Compost, 2. Plastic & Paper, 3. E-waste, 4. Trash
-function randomCategory(){
+function randomCategory() {
     return Math.ceil(Math.random() * CATEGORIES);
 }
 
 //Get a random img for the question from the array of img src
-function getRandomQuestion(arr){
+function getRandomQuestion(arr) {
     let index = Math.floor(Math.random() * arr.length);
     console.log(arr[index]);
     return arr[index];
@@ -220,13 +220,13 @@ function setRandomQuestion() {
 }
 
 //Start game
-function startGame(){
+function startGame() {
     //Dipslay game UI
     showGame();
     //Start easy timer
-    if(difficulty == 0){
+    if (difficulty == 0) {
         easyTimer = setInterval(easyCountdown, SECONDS);
-    //Start hard timer        
+        //Start hard timer        
     } else {
         hardTimer = setInterval(hardCountdown, SECONDS);
     }
@@ -264,39 +264,50 @@ function addGame() {
             // Get user data.
             ref.doc(id).get().then(function (doc) {
 
-                let highScore = doc.data().HighScore; // Assign the users current wins
-                let gamesPlayed = doc.data().GamesPlayed; // Grab number of games played.
-
-                gamesPlayed++; // increment games played.
+                let highScore = doc.data().Score; // Assign the users current wins
 
                 // Create a time stamp for the game.
                 let date = new Date();
                 let timestamp = date.getTime();
 
                 // Check if the game score is greater than the users current highscore.
-                if (outcome > highScore) {
-                    highScore = outcome; // Increment wins
-                } else {
-                    highScore = prevScore; // Increment losses
+                if (score > highScore) {
+                    highScore = score; // Increment wins
                 }
 
-                // Update the users wins, loses, and last time played.
-                ref.doc(id).update({
-                    'LastTimePlayed': timestamp,
-                    'GamesPlayed': gamesPlayed,
-                    'Scores.Hard': highScore,
-                    'Scores.Easy': highScore
-                }).then(function () {
-                    // Send to landing page.
-                    location.replace('homePage.html');
+                if (difficulty == 0) {
+                    // Update users last time played and score in hard difficulty.
+                    ref.doc(id).update({
+                        'LastTimePlayed': timestamp,
+                        'Scores.Hard': highScore,
+                    }).then(function () {
+                        // Send to landing page.
+                        location.replace('homePage.html');
 
-                    // log an error in the console.
-                }).catch(function (error) {
-                    console.error('Error creating game: ', error);
+                        // log an error in the console.
+                    }).catch(function (error) {
+                        console.error('Error creating game: ', error);
 
-                    // Send to landing page.
-                    location.replace('homePage.html');
-                });
+                        // Send to landing page.
+                        location.replace('homePage.html');
+                    });
+                } else {
+                    // Update users last time played and score in easy difficulty.
+                    ref.doc(id).update({
+                        'LastTimePlayed': timestamp,
+                        'Scores.Easy': highScore
+                    }).then(function () {
+                        // Send to landing page.
+                        location.replace('homePage.html');
+
+                        // log an error in the console.
+                    }).catch(function (error) {
+                        console.error('Error creating game: ', error);
+
+                        // Send to landing page.
+                        location.replace('homePage.html');
+                    });
+                }
             })
         } else {
             // If no user is signed in.
@@ -306,11 +317,11 @@ function addGame() {
 }
 
 //------------------------------------------------------
-// Add Score to Easy Leaderboard
+// Add Score to Leaderboard based on Difficulty
 //------------------------------------------------------ 
 
 // Add the users score to the Easy_Leaderboard collection.
-function addEasyGame() {
+function addScore() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // Get the currently signed in users UID
@@ -329,76 +340,68 @@ function addEasyGame() {
                 let name = doc.data().Name;
                 let school = doc.data().School;
 
-                // Create reference for Easy-Leaderboard collection
-                let boardRef = db.collection('Easy_Leaderboard');
+                let boardRef; // declare variable for leaderboard reference.
 
-                // Update the users wins, loses, and last time played.
-                boardRef.doc().set({
-                    'Name': name,
-                    'School': school,
-                    'Score': score // Set to game score.
-                }).then(function () {
-                    // Send to landing page.
-                    location.replace('homePage.html');
+                // Create a time stamp for the game.
+                let date = new Date();
+                let timestamp = date.getTime();
 
-                    // log an error in the console.
-                }).catch(function (error) {
-                    console.error('Error adding game: ', error);
+                // Assign the users current wins
+                let highScore = doc.data().Score;
 
-                    // Send to landing page.
-                    location.replace('homePage.html');
-                });
-            })
-        } else {
-            // If no user is signed in.
-            console.log('no user');
-        }
-    })
-}
-
-//------------------------------------------------------
-// Add Score to Hard Leaderboard
-//------------------------------------------------------ 
-
-// Add the users score to the Hard_Leaderboard collection.
-function addHardGame() {
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            // Get the currently signed in users UID
-            let id = user.uid;
-
-            console.log(id);
-            // Create reference for database.
-            let db = firebase.firestore();
-
-            // Create reference for Users collection.
-            let ref = db.collection('Users');
-
-            ref.doc(id).get().then(function (doc) {
-
-                // Assign the users name and school to variables.
-                let name = doc.data().Name;
-                let school = doc.data().School;
+                // Check if the game score is greater than the users current highscore.
+                if (score > highScore) {
+                    highScore = score; // Increment wins
+                }
 
                 // Create reference for Easy-Leaderboard collection
-                let boardRef = db.collection('Hard_Leaderboard');
+                if (difficulty == 0) {
+                    boardRef = db.collection('Easy_Leaderboard');
 
-                // Update the users wins, loses, and last time played.
-                boardRef.doc().set({
-                    'Name': name,
-                    'School': school,
-                    'Score': score // Set to game score.
-                }).then(function () {
-                    // Send to landing page.
-                    location.replace('homePage.html');
+                    // Update users last time played and score in easy difficulty.
+                    ref.doc(id).update({
+                        'LastTimePlayed': timestamp,
+                        'Scores.Easy': highScore
+                    }).then(function () {
 
-                    // log an error in the console.
-                }).catch(function (error) {
-                    console.error('Error adding game: ', error);
+                        // Update the users wins, loses, and last time played.
+                        boardRef.doc().set({
+                            'Name': name,
+                            'School': school,
+                            'Score': score // Set to game score.
+                        }).then(function () {
+                            // Log an error message
+                        }).catch(function (error) {
+                            console.error('Error adding game: ', error);
+                        });
+                        // log an error in the console.
+                    }).catch(function (error) {
+                        console.error('Error creating game: ', error);
+                    });
+                } else {
+                    boardRef = db.collection('Hard_Leaderboard');
 
-                    // Send to landing page.
-                    location.replace('homePage.html');
-                });
+                    // Update users last time played and score in hard difficulty.
+                    ref.doc(id).update({
+                        'LastTimePlayed': timestamp,
+                        'Scores.Hard': highScore,
+                    }).then(function () {
+
+                        // Update the users wins, loses, and last time played.
+                        boardRef.doc().set({
+                            'Name': name,
+                            'School': school,
+                            'Score': score // Set to game score.
+                        }).then(function () {
+                            // Log an error message
+                        }).catch(function (error) {
+                            console.error('Error adding game: ', error);
+                        });
+                        // log an error in the console.
+                    }).catch(function (error) {
+                        console.error('Error creating game: ', error);
+                    });
+                }
             })
         } else {
             // If no user is signed in.
@@ -423,7 +426,14 @@ function easyMode() {
     document.getElementById("myNav").style.height = "0%";
     startTimer = setInterval(startCountdown, SECONDS);
     difficulty = 0;
-  }
-function gameOver(){
-    location.replace("homePage.html");
+}
+
+function gameOver() {
+
+    if (difficulty == 0) {
+        addEasyScore(); // send user score to easy leaderboard.
+    } else {
+        addHardScore(); // send user score to hard leaderboard.
+    }
+    addGame(); // Adds the game to the users collection.
 }
