@@ -21,11 +21,9 @@ let auth = firebase.auth();
 // SignUp
 //------------------------------------------------------ 
 function createUser() {
-
-  document.getElementById("myNav").style.height = "0%"
   // Grabs dom element references.
-  let theEmail = document.getElementById('email');
-  let pass = document.getElementById('password');
+  let theEmail = document.getElementById('newEmail');
+  let pass = document.getElementById('newPassword');
 
   // Sets the values for the email and password.
   let email = theEmail.value;
@@ -35,7 +33,7 @@ function createUser() {
 
     // Gives authorization to log in if the email and password are valid.
     auth.signInWithEmailAndPassword(email, password).then(function () {
-
+      document.getElementById("myNav").style.height = "0%";
       // reference to firebase authentication.
       let user = firebase.auth().currentUser;
 
@@ -54,8 +52,9 @@ function createUser() {
     // Handle Errors here.
     if (password.length < 6) {
       window.alert('Password needs to be at least 6 characters.');
+    } else {
+      window.alert(error.message);
     }
-    window.alert(error.message);
   });
 }
 
@@ -77,7 +76,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     db.collection('Users').get().then((snapshot) => {
       snapshot.docs.forEach(doc => {
         if (doc.data().UID == user.uid) {
-          checkUser = false;    
+          checkUser = false;
           console.log(checkUser);
         }
       })
@@ -159,7 +158,7 @@ function logout() {
 //------------------------------------------------------ 
 
 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
-  .then(function() {
+  .then(function () {
     // Existing and future Auth states are now persisted in the current
     // session only. Closing the window would clear any existing state even
     // if a user forgets to sign out.
@@ -167,33 +166,32 @@ firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
     // New sign-in will be persisted with session persistence.
     return firebase.auth().signInWithEmailAndPassword(email, password);
   })
-  .catch(function(error) {
+  .catch(function (error) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
   });
 
-  // If they put in the correct password, promt to type in new pasword.
-  if (knowPass) {
+// If they put in the correct password, promt to type in new pasword.
+if (knowPass) {
 
-    let newPassword;
-    // Get the new password.
-    let newPasswordOne = document.getElementById("newPassw").value;
-    let newPasswordTwo = document.getElementById("confirm").value;
+  let newPassword;
+  // Get the new password.
+  let newPasswordOne = document.getElementById("newPassw").value;
+  let newPasswordTwo = document.getElementById("confirm").value;
 
-    if (newPasswordOne == newPasswordTwo) {
-      newPassword = newPasswordOne;
-    }
-
-    // Update the pasword in firestore.
-    user.updatePassword(newPassword).then(function () {
-      // Update successful.
-      window.alert("Your password has been reset.");
-    }).catch(function (error) {
-      // An error happened.
-      console.log('error');
-    });
+  if (newPasswordOne == newPasswordTwo) {
+    newPassword = newPasswordOne;
   }
+
+  // Update the pasword in firestore.
+  user.updatePassword(newPassword).then(function () {
+    // Update successful.
+    window.alert("Your password has been reset.");
+  }).catch(function (error) {
+    // An error happened.
+    console.log('error');
+  });
 }
 
 function openNav() {
