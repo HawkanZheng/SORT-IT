@@ -1,22 +1,3 @@
-//--------------------------------------------------------------
-// Your web app's Firebase configuration
-//--------------------------------------------------------------
-let config = {
-  apiKey: "AIzaSyCI3tPf61sTY3nLoHJG7P8TGBakZU69o3w",
-  authDomain: "comp-1800-94b18.firebaseapp.com",
-  databaseURL: "https://comp-1800-94b18.firebaseio.com",
-  projectId: "comp-1800-94b18",
-  storageBucket: "comp-1800-94b18.appspot.com",
-  messagingSenderId: "254451731238",
-  appId: "1:254451731238:web:ff1e74fe12719d02740fe7"
-};
-// Initialize Firebase
-firebase.initializeApp(config);
-
-// // Get a reference to the database server.
-let db = firebase.firestore();
-let auth = firebase.auth();
-
 //------------------------------------------------------
 // SignUp
 //------------------------------------------------------ 
@@ -29,11 +10,17 @@ function createUser() {
   let email = theEmail.value;
   let password = pass.value;
 
+  // Get a reference to firebase authentication.
+  let auth = firebase.auth();
+
+  // Creates a user using the email and password provided.
   auth.createUserWithEmailAndPassword(email, password).then(function () {
 
     // Gives authorization to log in if the email and password are valid.
     auth.signInWithEmailAndPassword(email, password).then(function () {
+      
       document.getElementById("myNav").style.height = "0%";
+
       // reference to firebase authentication.
       let user = firebase.auth().currentUser;
 
@@ -42,7 +29,7 @@ function createUser() {
         console.log("not logged in");
       } else {
         // user is signed in, send to game page.
-        window.location.replace('/html/homePage.html');
+        location.replace('/html/homePage.html');
       }
     }).catch(function (error) {
       window.alert(error.message);
@@ -90,6 +77,9 @@ firebase.auth().onAuthStateChanged(function (user) {
       name = document.getElementById("name").value;
       school = document.getElementById("school").value;
 
+      // Get a reference to the database server.
+      let db = firebase.firestore();
+
       // Add the user info to the database.
       db.collection('Users').doc(id).set({
         'Name': name,
@@ -125,6 +115,9 @@ function login() {
   let email = theEmail.value;
   let password = pass.value;
 
+  // Get a reference to firebase authentication.
+  let auth = firebase.auth();
+
   // Gives authorization to log in if the email and password are valid.
   auth.signInWithEmailAndPassword(email, password).then(function () {
 
@@ -136,7 +129,7 @@ function login() {
       console.log("not logged in");
     } else {
       // user is signed in, send to game page.
-      window.location.replace('/html/homePage.html');
+      location.replace('/html/homePage.html');
     }
   }).catch(function (error) {
     // Handle Errors here.
@@ -149,13 +142,13 @@ function login() {
 //------------------------------------------------------ 
 function logout() {
   firebase.auth().signOut().then(function () {
-    window.location.replace('index.html');
+    location.replace('index.html');
   }).catch(displayError);
 }
 
-//------------------------------------------------------
-// Update password
-//------------------------------------------------------ 
+//--------------------------------------------------------------------
+// Users will automatically logout once they close the browser window.
+//--------------------------------------------------------------------
 
 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
   .then(function () {
@@ -172,32 +165,12 @@ firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
     var errorMessage = error.message;
   });
 
-// If they put in the correct password, promt to type in new pasword.
-if (knowPass) {
-
-  let newPassword;
-  // Get the new password.
-  let newPasswordOne = document.getElementById("newPassw").value;
-  let newPasswordTwo = document.getElementById("confirm").value;
-
-  if (newPasswordOne == newPasswordTwo) {
-    newPassword = newPasswordOne;
-  }
-
-  // Update the pasword in firestore.
-  user.updatePassword(newPassword).then(function () {
-    // Update successful.
-    window.alert("Your password has been reset.");
-  }).catch(function (error) {
-    // An error happened.
-    console.log('error');
-  });
-}
-
+// Function to open the navigation bar.
 function openNav() {
   document.getElementById("myNav").style.height = "100%";
 }
 
+// Function close the navigation bar.
 function closeNav() {
   document.getElementById("myNav").style.height = "0%";
 }

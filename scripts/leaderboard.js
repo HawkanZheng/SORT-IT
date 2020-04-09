@@ -1,22 +1,3 @@
-//--------------------------------------------------------------
-// Your web app's Firebase configuration
-//--------------------------------------------------------------
-let config = {
-    apiKey: "AIzaSyCI3tPf61sTY3nLoHJG7P8TGBakZU69o3w",
-    authDomain: "comp-1800-94b18.firebaseapp.com",
-    databaseURL: "https://comp-1800-94b18.firebaseio.com",
-    projectId: "comp-1800-94b18",
-    storageBucket: "comp-1800-94b18.appspot.com",
-    messagingSenderId: "254451731238",
-    appId: "1:254451731238:web:ff1e74fe12719d02740fe7"
-};
-// Initialize Firebase
-firebase.initializeApp(config);
-
-// Get a reference to the database server.
-let db = firebase.firestore();
-let auth = firebase.auth();
-
 //------------------------------------------------------------
 // Leaderboards (EASY AND HARD)
 //------------------------------------------------------------
@@ -28,6 +9,9 @@ const TOP_PLAYERS = 10;
 
 // Add leaderboard information to the page.
 function getEasyLeaders() {
+
+    // Get a reference to the database server.
+    let db = firebase.firestore();
 
     // Get leaderboard element.
     let boards = document.getElementById('easy_leaderboards');
@@ -67,6 +51,9 @@ getEasyLeaders();
 // Add leaderboard information to the page.
 function getHardLeaders() {
 
+    // Get a reference to the database server.
+    let db = firebase.firestore();
+
     // Get leaderboard element.
     let boards = document.getElementById('hard_leaderboards');
 
@@ -96,6 +83,9 @@ function getHardLeaders() {
         })
     })
 }
+
+// Call the function.
+getHardLeaders();
 
 //------------------------------------------------------
 // Add Game
@@ -162,8 +152,6 @@ function addGame(outcome) {
 function getHome() {
     location.replace('homePage.html');
 }
-// Call the function.
-getHardLeaders();
 
 // Hides pop up menu.
 function hidePop() {
