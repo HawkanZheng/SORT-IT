@@ -13,6 +13,9 @@ let config = {
 // Initialize Firebase
 firebase.initializeApp(config);
 
+//Score of new account
+const START_SCORE = 0;
+
 // // Get a reference to the database server.
 let db = firebase.firestore();
 let auth = firebase.auth();
@@ -42,7 +45,7 @@ function createUser() {
         console.log("not logged in");
       } else {
         // user is signed in, send to game page.
-        //window.location.replace('/html/homePage.html');
+        addUserInfo(user);
       }
     }).catch(function (error) {
       window.alert(error.message);
@@ -62,55 +65,29 @@ function createUser() {
 // Send new User to database
 //------------------------------------------------------ 
 
-// Reference to the authentication in firestore.
-let user = firebase.auth().currentUser;
+//Add user info to user collection on database
+function addUserInfo(user) {
+  // Grabs user info from firestore.
+  let email = user.email;
+  let id = user.uid;
 
-// Declares variables used to store user info in the database.
-let email, name, school;
-const START_SCORE = 0;
-
-// Checks for changes in the signed in user.
-firebase.auth().onAuthStateChanged(function (user) {
-  if (user) {
-    let checkUser = true;
-    db.collection('Users').get().then((snapshot) => {
-      snapshot.docs.forEach(doc => {
-        if (doc.data().UID == user.uid) {
-          checkUser = false;
-          console.log(checkUser);
-        }
-      })
-    });
-    if (checkUser) {
-      // Grabs user info from firestore.
-      email = user.email;
-      id = user.uid;
-
-      // Grab DOM element info.
-      name = document.getElementById("name").value;
-      school = document.getElementById("school").value;
-
-      // Add the user info to the database.
-      db.collection('Users').doc(id).set({
-        'Name': name,
-        'School': school,
-        'email': email,
-        'UID': id, // Unique ID created when signup
-        'ScoresHard': START_SCORE, // Starts at zero wins
-        'ScoresEasy': START_SCORE // Starts at zero wins
-      }).then(function () {
-        window.location.replace('/html/homePage.html');
-        console.log('Doc successfully written!');
-      }).catch(function (error) {
-        console.error('Error writing document: ', error);
-      });
-    } else {
-      // No user is signed in.
-      console.log('already has an account.');
-    }
-  }
-});
-
+  // Grab DOM element info.
+  let name = document.getElementById("name").value;
+  let school = document.getElementById("school").value;
+  db.collection('Users').doc(id).set({
+    'Name': name,
+    'School': school,
+    'email': email,
+    'UID': id, // Unique ID created when signup
+    'ScoresHard': START_SCORE, // Starts at zero wins
+    'ScoresEasy': START_SCORE // Starts at zero wins
+  }).then(function () {
+    window.location.replace('/html/homePage.html');
+    console.log('Doc successfully written!');
+  }).catch(function (error) {
+    console.error('Error writing document: ', error);
+  });
+}
 
 //------------------------------------------------------
 // Login 
@@ -173,28 +150,6 @@ firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
     var errorMessage = error.message;
   });
 
-// If they put in the correct password, promt to type in new pasword.
-if (knowPass) {
-
-  let newPassword;
-  // Get the new password.
-  let newPasswordOne = document.getElementById("newPassw").value;
-  let newPasswordTwo = document.getElementById("confirm").value;
-
-  if (newPasswordOne == newPasswordTwo) {
-    newPassword = newPasswordOne;
-  }
-
-  // Update the pasword in firestore.
-  user.updatePassword(newPassword).then(function () {
-    // Update successful.
-    window.alert("Your password has been reset.");
-  }).catch(function (error) {
-    // An error happened.
-    console.log('error');
-  });
-}
-
 function openNav() {
   document.getElementById("myNav").style.height = "100%";
 }
@@ -202,4 +157,3 @@ function openNav() {
 function closeNav() {
   document.getElementById("myNav").style.height = "0%";
 }
-
