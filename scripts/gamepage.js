@@ -279,23 +279,23 @@ function endStats() {
     if (difficulty == 0) {
         if (previousHigh < score) {
             endDisplay.innerHTML = "Congratulations! New high score!" + "</br>" +
-                "Easy Difficulty" + "</br>" + "Your score: " + score +
-                "</br>" + "Your previous high score: " + previousHigh;
+            + "</br>" + "Easy Difficulty" + "</br>" + "</br>" + "Your score: " + score +
+                "</br>" + "</br>" + "Your previous high score: " + previousHigh;
         } else {
             //Show score
-            endDisplay.innerHTML = "Easy Difficulty" + "</br>" + "Your score: " + score +
-                "</br>" + "Your previous high score: " + previousHigh;
+            endDisplay.innerHTML = "Easy Difficulty" + "</br>" + "</br>" + "Your score: " + score +
+                "</br>" + "</br>" +"Your previous high score: " + previousHigh;
         }
         //Hard mode display
     } else {
         if (previousHigh < score) {
             endDisplay.innerHTML = "Congratulations! New high score!" + "</br>" +
-                "Hard Difficulty" + "</br>" + "Your score: " + score +
-                "</br>" + "Your previous high score: " + previousHigh;
+            + "</br>" + "Hard Difficulty" + "</br>" + "</br>" + "Your score: " + score +
+                "</br>" + "</br>" + "Your previous high score: " + previousHigh;
         } else {
             //Show score
-            endDisplay.innerHTML = "Hard Difficulty" + "</br>" + "Your score: " + score +
-                "</br>" + "Your previous high score: " + previousHigh;
+            endDisplay.innerHTML = "Hard Difficulty" + "</br>" + "</br>" + "Your score: " + score +
+                "</br>" + "</br>" + "Your previous high score: " + previousHigh;
         }
     }
 }
