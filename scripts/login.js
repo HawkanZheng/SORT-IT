@@ -42,7 +42,7 @@ function createUser() {
         console.log("not logged in");
       } else {
         // user is signed in, send to game page.
-        window.location.replace('/html/homePage.html');
+        //window.location.replace('/html/homePage.html');
       }
     }).catch(function (error) {
       window.alert(error.message);
@@ -99,6 +99,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         'ScoresHard': START_SCORE, // Starts at zero wins
         'ScoresEasy': START_SCORE // Starts at zero wins
       }).then(function () {
+        window.location.replace('/html/homePage.html');
         console.log('Doc successfully written!');
       }).catch(function (error) {
         console.error('Error writing document: ', error);
