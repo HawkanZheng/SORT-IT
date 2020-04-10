@@ -41,43 +41,26 @@
 
     <div>
       <table style="width:200px">
-
         <!-- Usersname -->
         <tr>
           <td style="font-size: 3vh; padding-bottom: 30px" id="username"></td>
         </tr>
         <tr>
           <td style="font-size: 3vh; padding-bottom: 30px;">
-            <input id="newUsername" type="text" placeholder="new Username">
+            <input style="border-radius: 20px; text-indent: 5px; border: none;" id="newUsername" type="text"
+              placeholder="new Username">
           </td>
-          <td style="font-size: 3vh; padding-bottom: 30px;">
-            <button style="font-size: 3vh; background-color: #1EAF1C; border: none; height: 5vh; width: 20vw;"
-              id="updateName" onclick="updateUsername()">
+          <td style="font-size: 3vh; padding-bottom: 30px; padding-left: 20px;">
+            <button style="border-radius: 20px; font-size: 3vh; background-color: cyan; border: none;
+          height: 5vh; width: 25vw; color: white;" id="updateName" onclick="updateUsername()">
               Update
             </button>
           </td>
         </tr>
         </br>
 
-        <!-- School -->
-        <tr>
-          <td style="font-size: 3vh; padding-bottom: 30px" id="currentSchool"></td>
-        </tr>
-        <tr>
-          <td style="font-size: 3vh; padding-bottom: 30px; width: fit-content;">
-            <input id="newSchool" type="text" placeholder="new School">
-          </td>
-          <td style="font-size: 3vh;  padding-bottom: 30px;">
-            <button style="background-color:#1EAF1C; border: none; height: 5vh; width: 20vw;" id="updateSchool"
-              onclick="updateSchool()">
-              Update
-            </button>
-          </td>
-        </tr>
-      </table>
-
-      <!-- Email -->
-      <p style="font-size: 3vh; padding-top: 10px;" id="currentEmail"></p>
+        <!-- Email -->
+        <p style="font-size: 3vh; padding-top: 10px;" id="currentEmail"></p>
     </div>
 
     <!-- Feedback for updating info -->
@@ -86,9 +69,28 @@
       <tr>
         <td id="currentEmail"></td>
         <td id="confirmation" style="color: green; font-weight: bold;"></td>
+        <td style="font-size: 3vh; padding-bottom: 30px; width: fit-content;">
+          <input style="border-radius: 20px; text-indent: 5px;" id="newSchool" type="text" placeholder="new School">
+        </td>
+        <td style="font-size: 3vh;  padding-bottom: 30px; padding-left: 20px;">
+          <button style="border-radius: 20px; background-color:cyan; border: none;
+          height: 5vh; width: 25vw; color: white;" id="updateSchool" onclick="updateSchool()">
+            Update
+          </button>
+        </td>
       </tr>
     </table>
   </div>
+
+  <!-- Feedback for updating info -->
+  </br>
+  <table>
+    <tr>
+      <td id="currentEmail"></td>
+      <td id="confirmation" style="color: green;"></td>
+    </tr>
+  </table>
+
   <!-- JS file link -->
   <script src="/scripts/account.js"></script>
   <script src="/scripts/firebase.js"></script>
