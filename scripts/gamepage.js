@@ -295,7 +295,7 @@ function endStats() {
     } else {
         if (previousHigh < score) {
             endDisplay.innerHTML = "Congratulations! New high score!" + "</br>" +
-                +"</br>" + "Hard Difficulty" + "</br>" + "</br>" + "Your score: " + score +
+                "</br>" + "Hard Difficulty" + "</br>" + "</br>" + "Your score: " + score +
                 "</br>" + "</br>" + "Your previous high score: " + previousHigh;
         } else {
             //Show score
@@ -334,16 +334,15 @@ function addScore() {
                 if (difficulty == 0) {
 
                     //set previous high score to display on end game
-                    //If new user previous high set to current score
+                    //If new user previous high set to 0
                     if (doc.data().ScoresEasy == undefined){
-                        previousHigh = score;
+                        previousHigh = 0;
                     } else{
                         previousHigh = doc.data().ScoresEasy;
                     }
                     
-
                     // Check if the game score is greater than the users current highscore.
-                    let highScore = maxScore(score, previousHigh); // Increment wins
+                    let highScore = maxScore(score, previousHigh); 
 
                     // Update users last time played and score in easy difficulty.
                     ref.doc(id).update({
@@ -360,8 +359,8 @@ function addScore() {
 
                     //set previous high score to display on end game
                     //If new user previous high set to current score
-                    if(doc.data().ScoreHard == undefined){
-                        previousHigh = score;
+                    if(doc.data().ScoresHard == undefined){
+                        previousHigh = 0;
                     } else {
                         previousHigh = doc.data().ScoresHard;
                     }
