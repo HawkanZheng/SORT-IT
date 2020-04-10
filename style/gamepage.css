@@ -19,24 +19,28 @@ button:hover{
 #compost {
     top: 0%;
     left: 0%;
+    background-color: green;
 }
 
 #paper {
     top: 0%;
     left: 100%;
     transform: translate(-100%);
+    background-color: lightskyblue;
 }
 
 #ewaste {
     top: 100%;
     left: 0%;
     transform: translate(0%, -100%);
+    background-color: lightslategrey;
 }
 
 #trash {
     top: 100%;
     left: 100%;
     transform: translate(-100%, -100%);
+    background-color: brown;
 }
 
 #question {
@@ -184,22 +188,6 @@ button:hover{
 
 #home:hover { 
     background-color: white;
-}
-
-#compost {
-    background-color: green;
-}
-
-#ewaste {
-    background-color: lightslategrey;
-}
-
-#paper {
-    background-color: lightskyblue;
-}
-
-#trash{
-    background-color: brown;
 }
 
 .diff{
