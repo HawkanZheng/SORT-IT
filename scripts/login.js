@@ -80,8 +80,6 @@ function addUserInfo(user) {
     'School': school,
     'email': email,
     'UID': id, // Unique ID created when signup
-    // 'ScoresHard': START_SCORE, // Starts at zero wins
-    // 'ScoresEasy': START_SCORE // Starts at zero wins
   }).then(function () {
     window.location.replace('/html/homePage.html');
     console.log('Doc successfully written!');
