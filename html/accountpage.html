@@ -35,7 +35,6 @@
     </br>
     </br>
     </br>
-
     <!-- Users Account Info -->
     <h1 id="displayName" style="text-align: left; font-size: 7vh;"></h1>
 
@@ -58,29 +57,29 @@
           </td>
         </tr>
         </br>
-
-        <!-- Email -->
-        <p style="font-size: 3vh; padding-top: 10px;" id="currentEmail"></p>
+        <!-- Feedback for updating info -->
+        </br>
+        <table>
+          <tr>
+            <td id="currentEmail"></td>
+            <td id="confirmation" style="color: green; font-weight: bold;"></td>
+            <td style="font-size: 3vh; padding-bottom: 30px; width: fit-content;">
+              <input style="border-radius: 20px; text-indent: 5px;" id="newSchool" type="text" placeholder="new School">
+            </td>
+            <td style="font-size: 3vh;  padding-bottom: 30px; padding-left: 20px;">
+              <button style="border-radius: 20px; background-color:cyan; border: none;
+      height: 5vh; width: 25vw; color: white;" id="updateSchool" onclick="updateSchool()">
+                Update
+              </button>
+            </td>
+          </tr>
+        </table>
     </div>
-
-    <!-- Feedback for updating info -->
-    </br>
-    <table>
-      <tr>
-        <td id="currentEmail"></td>
-        <td id="confirmation" style="color: green; font-weight: bold;"></td>
-        <td style="font-size: 3vh; padding-bottom: 30px; width: fit-content;">
-          <input style="border-radius: 20px; text-indent: 5px;" id="newSchool" type="text" placeholder="new School">
-        </td>
-        <td style="font-size: 3vh;  padding-bottom: 30px; padding-left: 20px;">
-          <button style="border-radius: 20px; background-color:cyan; border: none;
-          height: 5vh; width: 25vw; color: white;" id="updateSchool" onclick="updateSchool()">
-            Update
-          </button>
-        </td>
-      </tr>
-    </table>
+    <!-- Email -->
+    <p style="font-size: 3vh; padding-top: 10px;" id="currentEmail"></p>
   </div>
+
+
 
   <!-- Feedback for updating info -->
   </br>
