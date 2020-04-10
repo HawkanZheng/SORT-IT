@@ -1,5 +1,5 @@
 body{
-    background-color: grey;
+    background-color: #00C5FF;
 }
 
 button {
@@ -9,6 +9,8 @@ button {
     border: none;
     font-size: 4.5vw;
     font-family: Helvetica;
+    background-color: #1EAF1C;
+    color: white;
 }
 
 button:hover{
@@ -85,11 +87,13 @@ button:hover{
     font-size: 100px;
     font-weight: bolder;
     font-family: Helvetica;
+    color: white;
 }
 
 .gameplay {
     display: none;
     font-family: Helvetica;
+    color: white;
 }
 
 .overlay {
@@ -159,6 +163,7 @@ button:hover{
 .end {
     display: none;
     font-family: Helvetica;
+    color: white;
 }
 
 #endScore {
