@@ -19,6 +19,8 @@
 </head>
 
 <body id="body">
+
+    <!-- Navigation Bar -->
     <div id="myNav" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="getHome()">&times;</a>
         <div class="overlay-content">
@@ -31,17 +33,18 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <a class="navbar-brand" href="homePage.html" style="font-size: 3em;">SORT-IT!</a>
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="myAccount.html" style="font-size: 2em;">My Account</a>
-          </li>
+            <li class="nav-item">
+                <a class="nav-link" href="myAccount.html" style="font-size: 2em;">My Account</a>
+            </li>
         </ul>
-      </nav>
+    </nav>
+
     <!-- leaderboard title and table -->
     <div id="board">
-    </br>
-    </br>
+        </br>
+        </br>
         <h3 id="text">Leaderboard</h3>
-    <h5 id="text">Difficulty: Easy</h5>
+        <h5 id="text">Difficulty: Easy</h5>
     </div>
     <div class="table-holder">
         <table class="ranking" id="easy_leaderboards">
@@ -54,13 +57,17 @@
             </tr>
         </table>
     </div>
+
+    <!-- Home Button -->
     <div class="home-btn-holder">
         <div>
             <button class="home-btn" onclick="getHome()">Home</button>
         </div>
     </div>
 
+    <!-- JS file link -->
     <script src="/scripts/leaderboard.js"></script>
+    <script src="/scripts/firebase.js"></script>
 
 </body>
 

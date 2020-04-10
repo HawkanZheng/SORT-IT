@@ -10,9 +10,9 @@ let config = {
     messagingSenderId: "254451731238",
     appId: "1:254451731238:web:ff1e74fe12719d02740fe7"
 };
+
 // Initialize Firebase
 firebase.initializeApp(config);
-
 
 //---------------------------------CONSTANTS-----------------------------------//
 //1 second in milliseconds
@@ -23,6 +23,7 @@ const CATEGORIES = 4;
 const EASYSELECT = 4;
 //Number of questions per hard category
 const HARDSELECT = 8;
+
 //------------------------------GLOBAL VARIABLES------------------------------//
 //Difficulty level for game, 0: easy, 1: hard
 let difficulty;
@@ -106,6 +107,7 @@ function easyCountdown() {
         easyTime--;
     }
 }
+
 //Countdown function for hard timer
 function hardCountdown() {
     gameClock.innerHTML = hardTime;
@@ -136,6 +138,7 @@ function startCountdown() {
 
 
 //--------------------------ONCLICK FUNCTIONS-------------------------------//
+
 //Onclick function for the four answer buttons
 function answerSelect() {
     //If selected correct category increment score, else decrement
@@ -163,6 +166,7 @@ plapapButton.onclick = answerSelect;
 ewasteButton.onclick = answerSelect;
 
 //-------------------------------GAMEPLAY FUNCTIONS---------------------------------//
+
 //Generate random number between 1 and 4 to determine the category of question
 //1. Compost, 2. Plastic & Paper, 3. E-waste, 4. Trash
 function randomCategory() {
@@ -279,18 +283,18 @@ function endStats() {
     if (difficulty == 0) {
         if (previousHigh < score) {
             endDisplay.innerHTML = "Congratulations! New high score!" + "</br>" +
-            + "</br>" + "Easy Difficulty" + "</br>" + "</br>" + "Your score: " + score +
+                +"</br>" + "Easy Difficulty" + "</br>" + "</br>" + "Your score: " + score +
                 "</br>" + "</br>" + "Your previous high score: " + previousHigh;
         } else {
             //Show score
             endDisplay.innerHTML = "Easy Difficulty" + "</br>" + "</br>" + "Your score: " + score +
-                "</br>" + "</br>" +"Your previous high score: " + previousHigh;
+                "</br>" + "</br>" + "Your previous high score: " + previousHigh;
         }
         //Hard mode display
     } else {
         if (previousHigh < score) {
             endDisplay.innerHTML = "Congratulations! New high score!" + "</br>" +
-            + "</br>" + "Hard Difficulty" + "</br>" + "</br>" + "Your score: " + score +
+                +"</br>" + "Hard Difficulty" + "</br>" + "</br>" + "Your score: " + score +
                 "</br>" + "</br>" + "Your previous high score: " + previousHigh;
         } else {
             //Show score
@@ -304,11 +308,6 @@ function endStats() {
 function returnHome() {
     location.replace("homePage.html");
 }
-
-
-//------------------------------------------------------
-// Add Score User collection based on Difficulty
-//------------------------------------------------------ 
 
 // Add the users score to the Easy_Leaderboard collection.
 function addScore() {
@@ -392,9 +391,7 @@ function addScore() {
     });
 }
 
-//------------------------------------------------------
-// Selects the Game difficulty
-//------------------------------------------------------ 
+//-------------------GAME DIFFICULTY SELECTION------------------------//
 
 // Takes user to 'hard' version of the game.
 function hardMode() {
