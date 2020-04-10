@@ -2,6 +2,7 @@ body{
     background-color: #00C5FF;
 }
 
+/* GAMEPLAY UI */
 button {
     width: 35vw;
     height: 25vh;
@@ -96,6 +97,7 @@ button:hover{
     color: white;
 }
 
+/* DROP DOWN DIFFICULTY SELECTION MENU */
 .overlay {
     height: 0%;
     width: 100%;
@@ -160,6 +162,7 @@ button:hover{
     height: 100%;
 }
 
+/* GAME OVER SCREEN UI */
 .end {
     display: none;
     font-family: Helvetica;
@@ -182,6 +185,10 @@ button:hover{
     top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+#home:hover { 
+    background-color: white;
 }
 
 #compost {
