@@ -73,9 +73,9 @@ overMusic.volume = 0.075;
 //Array for compost img src on easy difficulty, size 4
 let easyCompostArr = ["../images/compost/fruits.png", "../images/compost/vegetables.png", "../images/compost/eggshell.png", "../images/compost/leaves.png"];
 //Array for plastic and paper img src on easy difficulty, size 4
-let easyPlaPapArr = ["../images/p&p/cerealBox.png", "../images/p&p/waterbottle.png", "../images/p&p/magazine.png", "../images/p&p/newspaper.png"];
+let easyPlaPapArr = ["../images/p&p/cerealBox.png", "../images/p&p/waterbottle.png", "../images/p&p/magazine.png", "../images/p&p/newspaper.webp"];
 //Array for e-waste img src on easy difficulty, size 4
-let easyEwasteArr = ["../images/e-waste/cellphone.png", "../images/e-waste/laptop.png", "../images/e-waste/controller.png", "../images/e-waste/headphone.png"];
+let easyEwasteArr = ["../images/e-waste/cellphone.png", "../images/e-waste/laptop.png", "../images/e-waste/controller.png", "../images/e-waste/headphone.webp"];
 //Array for trash img src on easy difficulty, size 4
 let easyTrashArr = ["../images/trash/chipbag.png", "../images/trash/straw.png", "../images/trash/candywrapper.png", "../images/trash/erasers.png"];
 //Array for compost img src on easy difficulty, size 8
@@ -83,16 +83,16 @@ let hardCompostArr = ["../images/compost/fruits.png", "../images/compost/vegetab
     "../images/compost/bones.png", "../images/compost/leaves.png", "../images/compost/fishbone.png", "../images/compost/seeds.png"
 ];
 //Array for plastic and paper img src on easy difficulty, size 8
-let hardPlaPapArr = ["../images/p&p/cerealBox.png", "../images/p&p/waterbottle.png", "../images/p&p/magazine.png", "../images/p&p/newspaper.png",
-    "../images/p&p/box.png", "../images/p&p/milk.png", "../images/p&p/milkjug.png", "../images/p&p/envelope.png"
+let hardPlaPapArr = ["../images/p&p/cerealBox.png", "../images/p&p/waterbottle.png", "../images/p&p/magazine.png", "../images/p&p/newspaper.webp",
+    "../images/p&p/cardboard.svg", "../images/p&p/milk.png", "../images/p&p/milkjug.png", "../images/p&p/envelope.png"
 ];
 //Array for e-waste img src on easy difficulty, size 8
-let hardEwasteArr = ["../images/e-waste/cellphone.png", "../images/e-waste/laptop.png", "../images/e-waste/controller.png", "../images/e-waste/headphone.png",
+let hardEwasteArr = ["../images/e-waste/cellphone.png", "../images/e-waste/laptop.png", "../images/e-waste/controller.png", "../images/e-waste/headphone.webp",
     "../images/e-waste/tv.png", "../images/e-waste/microwave.png", "../images/e-waste/keyboard.png", "../images/e-waste/battery.png"
 ];
 //Array for trash img src on easy difficulty, size 8
 let hardTrashArr = ["../images/trash/chipbag.png", "../images/trash/straw.png", "../images/trash/candywrapper.png", "../images/trash/erasers.png",
-    "../images/trash/gluestick.png", "../images/trash/medicalmask.png", "../images/trash/toiletpaper.webp", "../images/trash/pencil.png"
+    "../images/trash/gluestick.png", "../images/trash/mask.svg", "../images/trash/toiletpaper.png", "../images/trash/pencil.png"
 ];
 
 //------------------------------TIMER FUNCTIONS--------------------------------------//
@@ -176,6 +176,7 @@ function randomCategory() {
 //Get a random img for the question from the array of img src
 function getRandomQuestion(arr) {
     let index = Math.floor(Math.random() * arr.length);
+    console.log(arr[index]);
     return arr[index];
 }
 
@@ -325,27 +326,24 @@ function addScore() {
 
             // Get user data.
             ref.doc(id).get().then(function (doc) {
-                let boardRef; // declare variable for leaderboard reference.
-                let highScore;
 
                 // Create a time stamp for the game.
-                let date = new Date();
-                let timestamp = date.getTime();
+                let timestamp = new Date().getTime();
 
                 // Create reference for Easy-Leaderboard collection
                 if (difficulty == 0) {
-                    boardRef = db.collection('Easy_Leaderboard');
-
-                    // Assign the users current wins
-                    highScore = doc.data().ScoresEasy;
 
                     //set previous high score to display on end game
-                    previousHigh = highScore;
+                    //If new user previous high set to current score
+                    if (doc.data().ScoresEasy == undefined){
+                        previousHigh = score;
+                    } else{
+                        previousHigh = doc.data().ScoresEasy;
+                    }
+                    
 
                     // Check if the game score is greater than the users current highscore.
-                    if (score > highScore) {
-                        highScore = score; // Increment wins
-                    }
+                    let highScore = maxScore(score, previousHigh); // Increment wins
 
                     // Update users last time played and score in easy difficulty.
                     ref.doc(id).update({
@@ -359,18 +357,18 @@ function addScore() {
                         console.error('Error creating game: ', error);
                     });
                 } else {
-                    boardRef = db.collection('Hard_Leaderboard');
-
-                    // Assign the users current wins
-                    highScore = doc.data().ScoresHard;
 
                     //set previous high score to display on end game
-                    previousHigh = highScore;
+                    //If new user previous high set to current score
+                    if(doc.data().ScoreHard == undefined){
+                        previousHigh = score;
+                    } else {
+                        previousHigh = doc.data().ScoresHard;
+                    }
+                    
 
                     // Check if the game score is greater than the users current highscore.
-                    if (score > highScore) {
-                        highScore = score; // Increment wins
-                    }
+                    let highScore = maxScore(score, previousHigh)
 
                     // Update users last time played and score in hard difficulty.
                     ref.doc(id).update({
@@ -389,6 +387,15 @@ function addScore() {
             console.log('no user');
         }
     });
+}
+
+//Returns higher score
+function maxScore(score1, score2){
+    let max = score2;
+    if (score1 > score2){
+        max = score1;
+    }
+    return max;
 }
 
 //-------------------GAME DIFFICULTY SELECTION------------------------//
