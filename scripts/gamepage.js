@@ -70,7 +70,7 @@ overMusic.volume = 0.075;
 
 //----------------------------IMAGE SRC ARRAYS-------------------------------//
 //Array for compost img src on easy difficulty, size 4
-let easyCompostArr = ["../images/compost/apple.png", "../images/compost/banana.png", "../images/compost/eggshell.png", "../images/compost/strawberry.png"];
+let easyCompostArr = ["../images/compost/fruits.png", "../images/compost/vegetables.png", "../images/compost/eggshell.png", "../images/compost/leaves.png"];
 //Array for plastic and paper img src on easy difficulty, size 4
 let easyPlaPapArr = ["../images/p&p/cerealBox.png", "../images/p&p/waterbottle.png", "../images/p&p/magazine.png", "../images/p&p/newspaper.png"];
 //Array for e-waste img src on easy difficulty, size 4
@@ -78,8 +78,8 @@ let easyEwasteArr = ["../images/e-waste/cellphone.png", "../images/e-waste/lapto
 //Array for trash img src on easy difficulty, size 4
 let easyTrashArr = ["../images/trash/chipbag.png", "../images/trash/straw.png", "../images/trash/candywrapper.png", "../images/trash/erasers.png"];
 //Array for compost img src on easy difficulty, size 8
-let hardCompostArr = ["../images/compost/apple.png", "../images/compost/banana.png", "../images/compost/eggshell.png", "../images/compost/strawberry.png",
-    "../images/compost/bones.png", "../images/compost/leaves.png", "../images/compost/fishbone.png", "../images/compost/watermelon.png"
+let hardCompostArr = ["../images/compost/fruits.png", "../images/compost/vegetables.png", "../images/compost/eggshell.png", "../images/compost/pizzbox.png",
+    "../images/compost/bones.png", "../images/compost/leaves.png", "../images/compost/fishbone.png", "../images/compost/seeds.png"
 ];
 //Array for plastic and paper img src on easy difficulty, size 8
 let hardPlaPapArr = ["../images/p&p/cerealBox.png", "../images/p&p/waterbottle.png", "../images/p&p/magazine.png", "../images/p&p/newspaper.png",
