@@ -10,7 +10,6 @@ Contains audio files that we use during the game play.
 
 ----------------------------------------------------------------------
 2. html
-Constains all html shell pages except for index.html 
 
     accountpage - Holds the users account information
 
@@ -28,6 +27,7 @@ Constains all html shell pages except for index.html
 
 ----------------------------------------------------------------------
 3. scripts
+
     account - Used on the users account page so that we can retrieve 
                  the users info from our database and update the info.
 
@@ -48,12 +48,14 @@ Constains all html shell pages except for index.html
 
 ----------------------------------------------------------------------
 4. images
+
 Contains all images used for the game. 
 All icons were used from iconFinder
 https://icons8.com
 
 ----------------------------------------------------------------------
 5. style
+
 Contains all external css files. However, because we used bootstrap on 
 some most of our pages, there was some inline styling needed. the files 
 names are similar to their respective html files.
