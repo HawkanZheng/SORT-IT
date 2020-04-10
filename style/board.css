@@ -43,7 +43,7 @@ td {
   font-family: 'Roboto', sans-serif;
   font-size: 3em;
   color: black;
-  background-color:cyan;
+  background-color: cyan;
   text-align: center;
   transition: all 0.2s;
   width: 50vw;
@@ -57,7 +57,7 @@ td {
 }
 
 .home-btn:hover {
-  background-color:white;
+  background-color: white;
   cursor: pointer;
 }
 
@@ -169,16 +169,16 @@ td {
 
 @media screen and (max-height: 450px) {
   .overlay {
-      overflow-y: auto;
+    overflow-y: auto;
   }
 
   .overlay a {
-      font-size: 20px
+    font-size: 20px
   }
 
   .overlay .closebtn {
-      font-size: 40px;
-      top: 15px;
-      right: 35px;
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
   }
 }

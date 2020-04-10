@@ -3,24 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!----------------------------------------------->
-    <!-- CSS: Bootstrap, Firebase, other API -->
-    <!----------------------------------------------->
-    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
-  
+  <title>SORT-IT! - My Account</title>
+  <!----------------------------------------------->
+  <!-- CSS: Bootstrap, Firebase, other API -->
+  <!----------------------------------------------->
+  <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
-  <title>SORT-IT! - My Account</title>
 </head>
 
 <body style="background-color: rgb(91, 154, 57); font-family: Helvetica;">
 
+  <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
     <a class="navbar-brand" href="homePage.html" style="font-size: 3vh;">SORT-IT!</a>
     <ul class="navbar-nav">
@@ -29,14 +30,19 @@
       </li>
     </ul>
   </nav>
-</br>
-</br>
-</br>
-</br>
-</br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+
+  <!-- Users Account Info -->
   <h1 id="displayName" style="text-align: center; font-size: 7vh;"></h1>
+
   <div>
     <table style="width:200px">
+
+      <!-- Usersname -->
       <tr>
         <td style="font-size: 3vh; padding-bottom: 30px" id="username"></td>
       </tr>
@@ -45,12 +51,15 @@
           <input id="newUsername" type="text" placeholder="new Username">
         </td>
         <td style="font-size: 3vh; padding-bottom: 30px;">
-          <button style="font-size: 3vh; background-color: cyan; border: none; height: 5vh; width: 20vw;" id="updateName" onclick="updateUsername()">
+          <button style="font-size: 3vh; background-color: cyan; border: none; height: 5vh; width: 20vw;"
+            id="updateName" onclick="updateUsername()">
             Update
           </button>
         </td>
       </tr>
-    </br>
+      </br>
+
+      <!-- School -->
       <tr>
         <td style="font-size: 3vh; padding-bottom: 30px" id="currentSchool"></td>
       </tr>
@@ -59,26 +68,29 @@
           <input id="newSchool" type="text" placeholder="new School">
         </td>
         <td style="font-size: 3vh;  padding-bottom: 30px;">
-          <button style="background-color:cyan; border: none; height: 5vh; width: 20vw;" id="updateSchool" onclick="updateSchool()">
+          <button style="background-color:cyan; border: none; height: 5vh; width: 20vw;" id="updateSchool"
+            onclick="updateSchool()">
             Update
           </button>
         </td>
       </tr>
     </table>
+
+    <!-- Email -->
     <p style="font-size: 3vh; padding-top: 10px;" id="currentEmail"></p>
   </div>
-</br>
+
+  <!-- Feedback for updating info -->
+  </br>
   <table>
     <tr>
       <td id="confirmation" style="color: cyan;"></td>
     </tr>
   </table>
-  </br>
 
-  <!----------------------------------------------->
-  <!-- Javascript Files -->
-  <!----------------------------------------------->
+  <!-- JS file link -->
   <script src="/scripts/account.js"></script>
+  <script src="/scripts/firebase.js"></script>
 </body>
 
 </html>

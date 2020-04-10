@@ -9,14 +9,18 @@
   <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
-  <link href="/style/home.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <link href="/style/home.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 
 <body id="body">
+
+  <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
     <a class="navbar-brand" href="#" style="font-size: 3em;">SORT-IT!</a>
     <ul class="navbar-nav">
@@ -35,7 +39,9 @@
     <div>
       <h2 id="welcome"></h2>
     </div>
-  </br>
+    </br>
+
+    <!-- Buttons -->
     <div>
       <button class="button" onclick="play()">Start Game</button>
     </div>
@@ -46,8 +52,11 @@
       <button class="button" onclick="checkLeaders()">Leaderboard</button>
     </div>
   </div>
+
+  <!-- JS file link -->
   <script src="/scripts/navigation.js"></script>
   <script src="/scripts/account.js"></script>
+  <script src="/scripts/firebase.js"></script>
 </body>
 
 </html>

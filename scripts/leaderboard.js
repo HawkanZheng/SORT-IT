@@ -10,24 +10,18 @@ let config = {
     messagingSenderId: "254451731238",
     appId: "1:254451731238:web:ff1e74fe12719d02740fe7"
 };
+
 // Initialize Firebase
 firebase.initializeApp(config);
 
-// Get a reference to the database server.
-let db = firebase.firestore();
-let auth = firebase.auth();
-
-//------------------------------------------------------------
-// Leaderboards (EASY AND HARD)
-//------------------------------------------------------------
-
-// Max number of players to display on leaderboard.
+//--------------------CONSTANTS------------------------//
 const TOP_PLAYERS = 10;
 
-//------------------ Choose to show Easy Leaderboard ------------------------//
-
-// Add leaderboard information to the page.
+// Displays easy leaderboard information to the page.
 function getEasyLeaders() {
+
+    // Get a reference to the database server.
+    let db = firebase.firestore();
 
     // Get leaderboard element.
     let boards = document.getElementById('easy_leaderboards');
@@ -62,10 +56,11 @@ function getEasyLeaders() {
 // Call the function.
 getEasyLeaders();
 
-//------------------ Choose to show Hard Leaderboard ------------------------//
-
-// Add leaderboard information to the page.
+// Displays hard leaderboard information to the page.
 function getHardLeaders() {
+
+    // Get a reference to the database server.
+    let db = firebase.firestore();
 
     // Get leaderboard element.
     let boards = document.getElementById('hard_leaderboards');
