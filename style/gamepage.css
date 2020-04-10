@@ -1,4 +1,4 @@
-body{
+body {
     background-color: #00C5FF;
 }
 
@@ -14,8 +14,8 @@ button {
     color: white;
 }
 
-button:hover{
-    border:black 2px solid;
+button:hover {
+    border: black 2px solid;
 }
 
 #compost {
@@ -28,7 +28,7 @@ button:hover{
     top: 0%;
     left: 100%;
     transform: translate(-100%);
-    background-color: lightskyblue;
+    background-color: rgb(231, 199, 16);
 }
 
 #ewaste {
@@ -95,10 +95,53 @@ button:hover{
     color: white;
 }
 
+#myNav {
+    height: 100%;
+}
+
+/* GAME OVER SCREEN UI */
+
+#endScore {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#home {
+    border-radius: 3vw;
+    width: 200px;
+    height: 100px;
+    font-size: 25px;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#home:hover {
+    background-color: white;
+    color: #1EAF1C;
+}
+
 .gameplay {
     display: none;
     font-family: Helvetica;
     color: white;
+}
+
+.end {
+    display: none;
+    font-family: Helvetica;
+    color: white;
+}
+
+.diff {
+    font-family: Helvetica;
+}
+
+h1 {
+    text-align: center;
 }
 
 /* DROP DOWN DIFFICULTY SELECTION MENU */
@@ -160,45 +203,4 @@ button:hover{
         top: 15px;
         right: 35px;
     }
-}
-
-#myNav {
-    height: 100%;
-}
-
-/* GAME OVER SCREEN UI */
-.end {
-    display: none;
-    font-family: Helvetica;
-    color: white;
-}
-
-#endScore {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
-}
-
-#home {
-    border-radius: 3vw;
-    width: 200px;
-    height: 100px;
-    font-size: 25px;
-    position: absolute;
-    top: 75%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#home:hover { 
-    background-color: white;
-}
-
-.diff{
-    font-family: Helvetica;
-}
-
-h1{
-    text-align: center;
 }

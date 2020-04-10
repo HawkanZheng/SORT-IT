@@ -1,16 +1,26 @@
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto;
-  background-color: black;
-  padding: 10px;
+body {
+  position: relative;
+  text-align: center;
 }
 
-.grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  font-size: 20px;
-  text-align: center;
+/* Compost Section */
+.compost {
+  background-color: green;
+}
+
+/* E-waste Section */
+.ewaste {
+  background-color: lightslategrey;
+}
+
+/* Plastic & Paper Section */
+.paper {
+  background-color: rgb(231, 199, 16);
+}
+
+/* Trash Section */
+.trash {
+  background-color: brown;
 }
 
 /* Photos */
@@ -34,8 +44,37 @@
   text-align: center;
 }
 
-body {
-  position: relative;
+/* Info about the picture on hover. */
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Each section of the page */
+.section {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  background-color: black;
+  padding: 10px;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 20px;
   text-align: center;
 }
 
@@ -69,42 +108,5 @@ body {
   }
 }
 
-/* Info about the picture on hover. */
-.text {
-  color: white;
-  font-size: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
 
-/* Each section of the page */
-.section {
-  padding-top:60px;
-  padding-bottom:60px;
-}
-
-/* Compost Section */
-.compost {
-  background-color: green;
-}
-
-/* Compost Section */
-.ewaste {
-  background-color: lightslategrey;
-}
-
-/* Compost Section */
-.paper {
-  background-color: lightskyblue;
-}
-
-/* Compost Section */
-.trash {
-  background-color: brown;
-}
 
