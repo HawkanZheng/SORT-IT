@@ -7,7 +7,7 @@
 }
 
 #body {
-    background-color: #47C903;
+    background-color: #00C5FF;
 }
 
 .center {
@@ -48,11 +48,17 @@
     width: 100px;
     height: 30px;
     font-size: 2vh;
-    background-color: cyan;
+    background-color: #1EAF1C;
+    color: white;
     border-radius: 20px;
     border: none;
     cursor: pointer;
     font-family: Helvetica;
+}
+
+.buttons:hover{
+    background-color: white;
+    color: #1EAF1C;
 }
 
 input.div {

@@ -18,10 +18,12 @@ td {
   padding: 30px;
   text-align: center;
   border-bottom: 2px solid rgb(70, 63, 63);
+  color: black;
 }
 
 th {
-  background-color: cyan;
+  background-color: #1EAF1C;
+  color: white;
   font-size: 2em;
 }
 
@@ -42,8 +44,8 @@ td {
   text-decoration: none;
   font-family: 'Roboto', sans-serif;
   font-size: 3em;
-  color: black;
-  background-color:cyan;
+  color: white;
+  background-color: #1EAF1C;
   text-align: center;
   transition: all 0.2s;
   width: 50vw;
@@ -58,6 +60,7 @@ td {
 
 .home-btn:hover {
   background-color:white;
+  color: #1EAF1C;
   cursor: pointer;
 }
 
@@ -69,7 +72,7 @@ td {
 }
 
 #body {
-  background-color: #47C903;
+  background-color: #00C5FF;
 }
 
 /* Dropdown Button */
@@ -121,6 +124,8 @@ td {
 
 #text {
   font-size: 50px;
+  color: white;
+  margin-top: 60px;
 }
 
 .overlay {

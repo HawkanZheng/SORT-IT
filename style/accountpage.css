@@ -4,7 +4,7 @@
     text-decoration: none;
     font-size: 1em;
     color: white;
-    background-color: #6fa14b;
+    background-color: black;
     text-align: center;
     transition: all 0.2s;
     width: 10px;
@@ -17,7 +17,7 @@
 
 #background {
   font-family: Helvetica;
-  background-color: limegreen !important; 
+  background-color: #00B7FF !important; 
 }
 
 td {
