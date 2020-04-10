@@ -110,6 +110,7 @@ input.div {
     background-color: rgba(0, 0, 0, 0.9);
     overflow-y: hidden;
     transition: 0.5s;
+    font-family: Helvetica;
 }
 
 .overlay-content {
