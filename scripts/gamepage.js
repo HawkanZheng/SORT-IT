@@ -284,7 +284,7 @@ function endStats() {
     if (difficulty == 0) {
         if (previousHigh < score) {
             endDisplay.innerHTML = "Congratulations! New high score!" + "</br>" +
-                +"</br>" + "Easy Difficulty" + "</br>" + "</br>" + "Your score: " + score +
+                "</br>" + "Easy Difficulty" + "</br>" + "</br>" + "Your score: " + score +
                 "</br>" + "</br>" + "Your previous high score: " + previousHigh;
         } else {
             //Show score
