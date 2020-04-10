@@ -5,18 +5,20 @@
   <title>SORT-IT! - Study Guide</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <!----------------------------------------------->
   <!-- CSS: Bootstrap, Firebase, other API -->
   <!----------------------------------------------->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link href="/style/guide.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
+  <!-- Navigation Bar -->
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -40,157 +42,169 @@
     </div>
   </nav>
 
+  <!-- Compost Section -->
   <div id="section1" class="container-fluid compost section">
     <h1>Compost<img class="icons" src="/images/compostbin.png"></h1>
-    <h2>Compost is organic matter that has been created by recycling various organic materials.</h2>
+    <h2>Compost is made from organic matter.</h2>
     <h3>Disposed at designated compost bins.</h3>
+
     <div class="grid-container">
       <div class="grid-item">
-        <img class="icons" src="/images/compost/apple.png">
-        <br>Apple
+        <img class="icons" src="/images/compost/fruits.png">
+        <br>Fruit
       </div>
-      <div class="grid-item" id="2">
+      <div class="grid-item">
         <img class="icons" src="/images/compost/bones.png">
-        <br>Bone
+        <br>Bones
       </div>
-      <div class="grid-item" id="3">
-        <img class="icons" src="/images/compost/strawberry.png">
-        <br>Strawberry
+      <div class="grid-item">
+        <img class="icons" src="/images/compost/vegetables.png">
+        <br>Vegetables
       </div>
-      <div class="grid-item" id="4">
-        <img class="icons" src="/images/compost/watermelon.png">
-        <br>Watermelon
+      <div class="grid-item">
+        <img class="icons" src="/images/compost/pizzbox.png">
+        <br>Pizza Box
       </div>
-      <div class="grid-item" id="5">
-        <img class="icons" src="/images/compost/banana.png">
-        <br>Banana Peel
+      <div class="grid-item">
+        <img class="icons" src="/images/compost/seeds.png">
+        <br>Seeds
       </div>
-      <div class="grid-item" id="6">
+      <div class="grid-item">
         <img class="icons" src="/images/compost/fishbone.png">
-        <br>Fish Bone
+        <br>Fish Bones
       </div>
-      <div class="grid-item" id="7">
+      <div class="grid-item">
         <img class="icons" src="/images/compost/leaves.png">
-        <br>leaves
+        <br>Leaves
       </div>
-      <div class="grid-item" id="8">
+      <div class="grid-item">
         <img class="icons" src="/images/compost/eggshell.png">
-        <br>Egg Shell
+        <br>Egg Shells
       </div>
     </div>
   </div>
+
+  <!-- Electronic Waste Section -->
   <div id="section2" class="container-fluid ewaste section">
     <h1>Electronic Waste<img class="icons" src="/images/e-waste.png"></h1>
-    <h2>Electronic waste is discarded electrical or electronic equipment that is near or at the end of its useful life.</h2>
+    <h2>Electronic waste is discarded electrical or electronic equipment that is near or at the end of its useful life.
+    </h2>
     <h3>Disposed at designated recycling depots or electronic stores.</h3>
+
     <div class="grid-container">
       <div class="grid-item">
         <img class="icons" src="/images/e-waste/keyboard.png">
         <br>Keyboard
       </div>
-      <div class="grid-item" id="2">
-        <img class="icons" src="/images/e-waste/headphone.png">
-        <br>Headphone
+      <div class="grid-item">
+        <img class="icons" src="/images/e-waste/headphone.webp">
+        <br>Headphones
       </div>
-      <div class="grid-item" id="3">
+      <div class="grid-item">
         <img class="icons" src="/images/e-waste/laptop.png">
         <br>Laptop
       </div>
-      <div class="grid-item" id="4">
+      <div class="grid-item">
         <img class="icons" src="/images/e-waste/microwave.png">
         <br>Microwave
       </div>
-      <div class="grid-item" id="5">
+      <div class="grid-item">
         <img class="icons" src="/images/e-waste/tv.png">
         <br>TV
       </div>
-      <div class="grid-item" id="6">
+      <div class="grid-item">
         <img class="icons" src="/images/e-waste/cellphone.png">
-        <br>Cellphone
+        <br>Cellphones
       </div>
-      <div class="grid-item" id="7">
+      <div class="grid-item">
         <img class="icons" src="/images/e-waste/battery.png">
-        <br>Battery
+        <br>Batteries
       </div>
-      <div class="grid-item" id="8">
-        <img class="icons" src="/images/e-waste/keyboard.png">
-        <br>Keyboard
+      <div class="grid-item">
+        <img class="icons" src="/images/e-waste/controller.png">
+        <br>Controllers
       </div>
     </div>
   </div>
+
+  <!-- Paper and Plastic Section -->
   <div id="section3" class="container-fluid paper section">
     <h1>Paper/Plastic<img class="icons" src="/images/paper plastic.png"></h1>
-    <h2>Plastic and paper wastes are recyclable plastic and paper objects that are no longer useful.</h2>
-    <h3>Disposed at designated recycling bins.</h3>
+    <h2>Clean paper and plastic waste is recyclable.</h2>
+    <h3>Disposed in designated recycling bins.</h3>
+
     <div class="grid-container">
       <div class="grid-item">
         <img class="icons" src="/images/p&p/waterbottle.png">
         <br>Water Bottle
       </div>
-      <div class="grid-item" id="2">
-        <img class="icons" src="/images/p&p/box.png">
-        <br>Box
+      <div class="grid-item">
+        <img class="icons" src="/images/p&p/cardboard.svg">
+        <br>Cardboard
       </div>
-      <div class="grid-item" id="3">
+      <div class="grid-item">
         <img class="icons" src="/images/p&p/milk.png">
         <br>Juice Carton
       </div>
-      <div class="grid-item" id="4">
-        <img class="icons" src="/images/p&p/newspaper.png">
-        <br>Newspaper
+      <div class="grid-item">
+        <img class="icons" src="/images/p&p/newspaper.webp">
+        <br>Coloured</br>Newspaper
       </div>
-      <div class="grid-item" id="5">
+      <div class="grid-item">
         <img class="icons" src="/images/p&p/envelope.png">
         <br>Envelope
       </div>
-      <div class="grid-item" id="6">
+      <div class="grid-item">
         <img class="icons" src="/images/p&p/magazine.png">
         <br>Magazine
       </div>
-      <div class="grid-item" id="7">
+      <div class="grid-item">
         <img class="icons" src="/images/p&p/milkjug.png">
         <br>Milk Jug
       </div>
-      <div class="grid-item" id="8">
+      <div class="grid-item">
         <img class="icons" src="/images/p&p/cerealBox.png">
         <br>Controller
       </div>
     </div>
   </div>
+
+  <!-- Trash Section -->
   <div id="section4" class="container-fluid trash section">
     <h1>Trash<img class="icons" src="/images/trash.png"></h1>
     <h2>General waste that cannot be recycled.</h2>
-    <h3>Disposed at most grabage bins.</h3>
+    <h3>Disposed in most garbage bins.</h3>
+
     <div class="grid-container">
       <div class="grid-item">
         <img class="icons" src="/images/trash/chipbag.png">
         <br>Chip Bag
       </div>
-      <div class="grid-item" id="2">
+      <div class="grid-item">
         <img class="icons" src="/images/trash/candywrapper.png">
         <br>Candy Wrapper
       </div>
-      <div class="grid-item" id="3">
-        <img class="icons" src="/images/trash/medicalmask.png">
-        <br>Medical Mask
+      <div class="grid-item">
+        <img class="icons" src="/images/trash/mask.svg">
+        <br>Medical Masks
       </div>
-      <div class="grid-item" id="4">
+      <div class="grid-item">
         <img class="icons" src="/images/trash/straw.png">
-        <br>Straw
+        <br>Straws
       </div>
-      <div class="grid-item" id="5">
-        <img class="icons" src="/images/trash/toiletpaper.webp">
+      <div class="grid-item">
+        <img class="icons" src="/images/trash/toiletpaper.png">
         <br>Toilet Paper
       </div>
-      <div class="grid-item" id="6">
+      <div class="grid-item">
         <img class="icons" src="/images/trash/pencil.png">
         <br>Pencil
       </div>
-      <div class="grid-item" id="7">
+      <div class="grid-item">
         <img class="icons" src="/images/trash/erasers.png">
         <br>Eraser
       </div>
-      <div class="grid-item" id="8">
+      <div class="grid-item">
         <img class="icons" src="/images/trash/gluestick.png">
         <br>Glue Stick
       </div>
@@ -198,7 +212,6 @@
     </br>
   </div>
 
-  <script src="scripts/guide.js"></script>
 </body>
 
 </html>

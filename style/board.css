@@ -28,7 +28,7 @@ th {
 }
 
 td {
-  font-size: 1.5em;
+  font-size: 2vh;
 }
 
 #board {
@@ -174,16 +174,16 @@ td {
 
 @media screen and (max-height: 450px) {
   .overlay {
-      overflow-y: auto;
+    overflow-y: auto;
   }
 
   .overlay a {
-      font-size: 20px
+    font-size: 20px
   }
 
   .overlay .closebtn {
-      font-size: 40px;
-      top: 15px;
-      right: 35px;
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
   }
 }

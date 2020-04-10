@@ -10,20 +10,19 @@ let config = {
   messagingSenderId: "254451731238",
   appId: "1:254451731238:web:ff1e74fe12719d02740fe7"
 };
+
 // Initialize Firebase
 firebase.initializeApp(config);
 
-//Score of new account
+//--------------------CONSTANTS------------------------//
 const START_SCORE = 0;
 
-// // Get a reference to the database server.
-let db = firebase.firestore();
-let auth = firebase.auth();
-
-//------------------------------------------------------
-// SignUp
-//------------------------------------------------------ 
+// Creates new user.
 function createUser() {
+
+  // Get a reference to the firestore authentication.
+  let auth = firebase.auth();
+
   // Grabs dom element references.
   let theEmail = document.getElementById('newEmail');
   let pass = document.getElementById('newPassword');
@@ -61,12 +60,12 @@ function createUser() {
   });
 }
 
-//------------------------------------------------------
-// Send new User to database
-//------------------------------------------------------ 
-
 //Add user info to user collection on database
 function addUserInfo(user) {
+
+  // Get a reference to the database server.
+  let db = firebase.firestore();
+
   // Grabs user info from firestore.
   let email = user.email;
   let id = user.uid;
@@ -74,13 +73,15 @@ function addUserInfo(user) {
   // Grab DOM element info.
   let name = document.getElementById("name").value;
   let school = document.getElementById("school").value;
+
+  // Add new User to database.
   db.collection('Users').doc(id).set({
     'Name': name,
     'School': school,
     'email': email,
     'UID': id, // Unique ID created when signup
-    'ScoresHard': START_SCORE, // Starts at zero wins
-    'ScoresEasy': START_SCORE // Starts at zero wins
+    // 'ScoresHard': START_SCORE, // Starts at zero wins
+    // 'ScoresEasy': START_SCORE // Starts at zero wins
   }).then(function () {
     window.location.replace('/html/homePage.html');
     console.log('Doc successfully written!');
@@ -89,11 +90,11 @@ function addUserInfo(user) {
   });
 }
 
-//------------------------------------------------------
-// Login 
-//------------------------------------------------------ 
 // Function to handle login for user.
 function login() {
+
+  // Get a reference to the firestore authentication.
+  let auth = firebase.auth();
 
   // Grabs the DOM elements.
   let theEmail = document.getElementById('email');
@@ -122,25 +123,18 @@ function login() {
   });
 }
 
-//------------------------------------------------------
-// Logout
-//------------------------------------------------------ 
+// Logs user out
 function logout() {
   firebase.auth().signOut().then(function () {
     window.location.replace('index.html');
   }).catch(displayError);
 }
 
-//------------------------------------------------------
-// Update password
-//------------------------------------------------------ 
-
+// Users will automatically log out when they close browser window.
 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
   .then(function () {
     // Existing and future Auth states are now persisted in the current
-    // session only. Closing the window would clear any existing state even
-    // if a user forgets to sign out.
-    // ...
+    // session only.
     // New sign-in will be persisted with session persistence.
     return firebase.auth().signInWithEmailAndPassword(email, password);
   })
@@ -150,10 +144,14 @@ firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
     var errorMessage = error.message;
   });
 
+//-------------------NAVBAR SECTION---------------------//
+
+// Opens the nav bar
 function openNav() {
   document.getElementById("myNav").style.height = "100%";
 }
 
+// Closes the nav bar
 function closeNav() {
   document.getElementById("myNav").style.height = "0%";
 }

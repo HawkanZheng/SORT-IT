@@ -9,20 +9,20 @@ let config = {
     storageBucket: "comp-1800-94b18.appspot.com",
     messagingSenderId: "254451731238",
     appId: "1:254451731238:web:ff1e74fe12719d02740fe7"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(config);
+};
 
+// Initialize Firebase
+firebase.initializeApp(config);
 
-  //--------------------Get the HTML DOM elements---------------------------//
-  let displayName = document.getElementById('displayName');
-  let userName = document.getElementById('username');
-  let currentSchool = document.getElementById('currentSchool');
-  let currentEmail = document.getElementById('currentEmail');
-  let confirmation = document.getElementById('confirmation');
-  let welcome = document.getElementById('welcome');
+//--------------------Get the HTML DOM elements---------------------------//
+let displayName = document.getElementById('displayName');
+let userName = document.getElementById('username');
+let currentSchool = document.getElementById('currentSchool');
+let currentEmail = document.getElementById('currentEmail');
+let confirmation = document.getElementById('confirmation');
+let welcome = document.getElementById('welcome');
 
-// Update the users School.
+//--------------------Update Users School---------------------------//
 function updateSchool() {
     // Checks for changes in the signed in user.
     firebase.auth().onAuthStateChanged(function (user) {
@@ -57,7 +57,7 @@ function updateSchool() {
     })
 }
 
-// Update the users School.
+//--------------------Update Users Username---------------------------//
 function updateUsername() {
     // Checks for changes in the signed in user.
     firebase.auth().onAuthStateChanged(function (user) {
@@ -94,7 +94,7 @@ function updateUsername() {
     })
 }
 
-// Get the users profile information
+//--------------------Get Users Profile info---------------------------//
 function getProfile() {
     // Checks for changes in the signed in user.
     firebase.auth().onAuthStateChanged(function (user) {
@@ -126,7 +126,10 @@ function getProfile() {
     })
 }
 
-// Custom Home page.
+// Call the function
+getProfile();
+
+//--------------------Display Users name on Home Page---------------------------//
 function getName() {
     // Checks for changes in the signed in user.
     firebase.auth().onAuthStateChanged(function (user) {
@@ -153,5 +156,5 @@ function getName() {
     })
 }
 
+// Call the function
 getName();
-getProfile();
