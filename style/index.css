@@ -69,36 +69,6 @@ input.div {
     border-bottom: 2px solid #d9d9dd;
 }
 
-.studyGuide {
-    position: absolute;
-    top: 52%;
-    font-family: Helvetica;
-}
-
-.leaderboard {
-    position: absolute;
-    top: 59%;
-}
-
-.backLogo {
-    height: 8vh;
-    width: 7vw;
-}
-
-.myAccount {
-    margin-right: 2vh;
-    float: right;
-    text-align: center;
-    padding: 5px;
-    font-size: 4vh;
-}
-
-.profile {
-    text-align: left;
-    height: 8vh;
-    width: 7vw;
-}
-
 .overlay {
     height: 0%;
     width: 100%;
@@ -110,6 +80,7 @@ input.div {
     background-color: rgba(0, 0, 0, 0.9);
     overflow-y: hidden;
     transition: 0.5s;
+    font-family: Helvetica;
 }
 
 .overlay-content {
